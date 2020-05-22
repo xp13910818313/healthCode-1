@@ -1,0 +1,18 @@
+<view class='form'>
+	<view class="head">
+		<view class="user-id">
+			<text>ID:</text>
+			<text class="id-content">{{ID}}</text>
+		</view>
+	</view>
+	<view class="form-list">
+		<view class="form-item" wx:for="{{formData}}">
+			<view class="form-item-title">{{item.title}}</view>
+			<input class="form-item-content" data-index="{{index}}" value="{{item.value}}" bindinput="formChange" placeholder="请输入{{item.title}}"></input>
+		</view>
+	</view>
+	<view class="submit-btn">
+		<button type="primary" bindtap="submitForm">提交</button>
+	</view>
+  <image src="data:image/png;base64,{{src2}}"></image>
+</view>
