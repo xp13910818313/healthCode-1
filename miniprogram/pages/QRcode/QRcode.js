@@ -9,7 +9,8 @@ Page({
    */
   data: {
     openID:'123',
-    result: ''
+    result: '',
+    miniImg:''
   },
   getScancode: function() {
     var _this = this;
@@ -38,6 +39,16 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    wx.cloud.callFunction({
+      name:'wxacode',
+      success:res=>{
+        console.log(res.result)
+        that.setData({
+          miniImg:res.result
+        })
+        // var buffer = res.result.buffer
+      }
+    })
     drawQrcode({
       width: 200,
       height: 200,
@@ -46,7 +57,7 @@ Page({
       text: `${that.data.openID}`,
       // 执行成功后
       
-      })
+    })
   },
 
   /**
