@@ -1,3 +1,6 @@
 <view class="box">
+<view class="code">
 <canvas id="canvas" style="width: 220px; height: 220px;" canvas-id="myQrcode"></canvas>
+</view>
+<view class="openid">ID:{{userInfo.openid}}</view>
 </view>

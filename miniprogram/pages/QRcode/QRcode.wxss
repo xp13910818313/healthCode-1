@@ -1,5 +1,5 @@
 /* pages/QRcode/QRcode.wxss */
-.box {
+.code {
   width: 100%;
   display: flex;
   justify-content: center; /* 水平居中 */
@@ -9,4 +9,7 @@
 #canvas {
   display: flex;
 
+}
+.openid{
+  text-align: center;
 }

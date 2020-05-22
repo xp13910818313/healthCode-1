@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    openID:'123',
+    openID:'',
     result: ''
   },
   getScancode: function() {
@@ -37,13 +37,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.userInfo)
+    if(options.userInfo){
+      this.setData({
+        userInfo:JSON.parse(options.userInfo),
+        openID:JSON.parse(options.userInfo).openid,
+      })
+    }
     var that = this
     drawQrcode({
       width: 200,
       height: 200,
       canvasId: 'myQrcode',
       // ctx: wx.createCanvasContext('myQrcode'),
-      text: `${that.data.openID}`,
+      text: `${that.data.userInfo}`,
       // 执行成功后
       
       })
