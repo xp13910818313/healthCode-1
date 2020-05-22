@@ -5,8 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:'',
-
+    userInfo: '',
+    url: '',
     ID: '',
     formData: [{
       title: '血压',
@@ -78,19 +78,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   console.log(options.openid)
-   this.setData({
-     ID:options.openid
-   })
-   this.setData({
-     userInfo:getApp().globalData.userInfo
-   })
-   
-wx.cloud.callFunction({
-  name:'demo'
-}).then(res=>{
-  console.log(res)
-})
+    wx.cloud.callFunction({
+      name: "health_userInfo",
+      data: {
+        fun: "get",
+        get: "otherPeople",
+        openid: 'osXMd5M2TCZ-n7oTTwA8Ro1OQ7fQ'
+      },
+
+    }).then(res=>{
+      console.log(res)
+    })
+    wx.cloud.callFunction({
+      name: 'demo',
+      data: {
+        openid: '123'
+      }
+    }).then(res => {
+      console.log(res.result.fileID)
+      this.setData({
+        url: res.result.fileID
+      })
+    })
 
   },
 
