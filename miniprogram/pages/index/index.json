@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "mp-auth": "../../components/auth/dialog"
+  }
 }
