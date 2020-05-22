@@ -12,6 +12,10 @@ Page({
       })
     } else {
       console.log("生产二维码", _this.data.userInfo)
+      let userInfo=JSON.stringify( _this.data.userInfo)
+      wx.navigateTo({
+        url: '/pages/QRcode/QRcode?userInfo='+ userInfo,
+      })
     }
   },
   bindgetuserinfo() {
@@ -43,13 +47,8 @@ Page({
     // 允许从相机和相册扫码
     wx.scanCode({
       success: (res) => {
-        console.log(res.result)
         wx.navigateTo({
-          url: '../form/index?title=' + res.result
-        })
-        var result = res.result;
-        _this.setData({
-          result: result,
+          url: '../form/index?openid=' + res.result
         })
       }
     })

@@ -1,4 +1,4 @@
-<view class="box">
-<!-- <canvas id="canvas" style="width: 220px; height: 220px;" canvas-id="myQrcode"></canvas> -->
-<image src="{{miniImg}}"></image>
+<view class="code">
+<image id="canvas" src="{{miniImg}}"></image>
+<view class="openid">ID:{{userInfo.openid}}</view>
 </view>

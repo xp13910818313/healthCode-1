@@ -26,7 +26,8 @@ App({
           wx.cloud.callFunction({
             name: "health_userInfo",
             data: {
-              fun: "get"
+              fun: "get",
+              get:"oneself"
             },
             success: res => {
               console.log(res.result.data)

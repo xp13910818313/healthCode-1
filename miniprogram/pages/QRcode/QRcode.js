@@ -10,7 +10,8 @@ Page({
   data: {
     openID:'123',
     result: '',
-    miniImg:''
+    miniImg:'',
+    openID:'',
   },
   getScancode: function() {
     var _this = this;
@@ -39,14 +40,21 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    console.log(options.userInfo)
+    if(options.userInfo){
+      this.setData({
+        userInfo:JSON.parse(options.userInfo),
+        openID:JSON.parse(options.userInfo).openid,
+      })
+    }
+    console.log('openID',that.data.openID)
     wx.cloud.callFunction({
-      name:'wxacode',
+      name:'demo',
       success:res=>{
-        console.log(res.result)
+        console.log(res)
         that.setData({
-          miniImg:res.result
+          miniImg:res.result.fileID
         })
-        // var buffer = res.result.buffer
       }
     })
     drawQrcode({
@@ -54,7 +62,7 @@ Page({
       height: 200,
       canvasId: 'myQrcode',
       // ctx: wx.createCanvasContext('myQrcode'),
-      text: `${that.data.openID}`,
+      text: `${that.data.userInfo}`,
       // 执行成功后
       
     })

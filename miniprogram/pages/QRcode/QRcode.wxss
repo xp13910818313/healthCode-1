@@ -1,12 +1,21 @@
 /* pages/QRcode/QRcode.wxss */
-.box {
+page {
+  background-color: #07c160;
+}
+.code {
   width: 100%;
   display: flex;
   justify-content: center; /* 水平居中 */
   align-items: center;     /* 垂直居中 */
-  margin-top: 60rpx;
+  padding: 60rpx 0 60rpx 0;
+  flex-wrap: wrap;
+  background-color: #FFF;
 }
 #canvas {
   display: flex;
-
+  height: 670rpx;
+}
+.openid{
+  margin-top: 50rpx;
+  text-align: center;
 }
