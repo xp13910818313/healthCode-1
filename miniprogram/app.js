@@ -26,13 +26,14 @@ App({
           wx.cloud.callFunction({
             name: "health_userInfo",
             data: {
-              fun: "get"
+              fun: "get",
+              get:"oneself"
             },
             success: res => {
-              console.log(res.result.data)
+              console.log(res)
+             
               this.globalData.userInfo = res.result.data[0]
               this.globalData.isHas = s.authSetting['scope.userInfo']
-              console.log("全局的userInfo==>", this.globalData.userInfo)
               wx.hideLoading({
                 complete: (res) => {},
               })

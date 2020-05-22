@@ -14,5 +14,5 @@
 	<view class="submit-btn">
 		<button type="primary" bindtap="submitForm">提交</button>
 	</view>
-  <image src="data:image/png;base64,{{src2}}"></image>
+  <image src="{{url}}"></image>
 </view>
