@@ -11,12 +11,15 @@ exports.main = async (event, context) => {
     let len = await (await health.where({
       openid: wxContext.OPENID,
     }).get()).data.length
+
+    let userLen = await (await health.get()).data.length + 1
+    
     if (len == 0) {
       return await health.add({
         data: {
           openid: wxContext.OPENID,
           userInfo: event.userInfo,
-          isAdm: false
+          userID: event.userID + userLen
         }
       })
     } else return "用户名已存在"
@@ -26,9 +29,9 @@ exports.main = async (event, context) => {
       return await health.where({
         openid: wxContext.OPENID,
       }).get()
-    }else if(event.get == "otherPeople"){
+    } else if (event.get == "otherPeople") {
       return await health.where({
-        openid:event.openid
+        openid: event.openid
       }).get()
     }
   }
