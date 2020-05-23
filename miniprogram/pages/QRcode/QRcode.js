@@ -47,7 +47,6 @@ Page({
         ID:JSON.parse(options.userInfo).openid,
       })
     }
-    console.log('openID',that.data.openID)
     wx.showLoading({
       title: '加载中',
     })

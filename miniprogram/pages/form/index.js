@@ -79,7 +79,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let openid=options.openid?options.openid:'osXMd5IDKmmbNs3d8eDGRarVLPKg'
+    let openid=options.openid?options.openid:'osXMd5M2TCZ-n7oTTwA8Ro1OQ7fQ'
     console.log(openid)
     this.setData({
       ID:openid

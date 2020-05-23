@@ -14,6 +14,7 @@
 		<button class="btn-box" bindtap="openConfirm">
 			我的健康码
 		</button>
+		<view class="mine" bindtap="toRecord">我的体测记录</view>
 	</view>
 	<!-- <view class="saoyisao" wx:if="{{userInfo.isAdm}}" bindtap="getScancode">管理员扫码</view> -->
 	<mp-auth show="{{dialogShow}}" bindgetUserInfo="bindgetuserinfo"></mp-auth>

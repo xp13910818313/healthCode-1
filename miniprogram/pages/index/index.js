@@ -19,7 +19,7 @@ Page({
     }
   },
   bindgetuserinfo() {
-    
+
     var y = new Date().getFullYear();
     var m = new Date().getMonth() + 1;
     m = m < 10 ? '0' + m : m;
@@ -34,7 +34,7 @@ Page({
           data: {
             fun: "add",
             userInfo: r.userInfo,
-            userID:String(y).substring(2) + m + d
+            userID: String(y).substring(2) + m + d
           },
           success: res => {
             console.log("存储成功", res)
@@ -49,6 +49,18 @@ Page({
         })
       }
     })
+
+  },
+  toRecord(){
+    if(!getApp().globalData.userInfo){
+      this.setData({
+        dialogShow: true
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/record/record',
+      })
+    }
 
   },
   /**
