@@ -22,8 +22,14 @@ exports.main = async (event, context) => {
     } else return "用户名已存在"
 
   } else if (event.fun == "get") {
-    return await health.where({
-      openid: wxContext.OPENID,
-    }).get()
+    if (event.get == "oneself") {
+      return await health.where({
+        openid: wxContext.OPENID,
+      }).get()
+    }else if(event.get == "otherPeople"){
+      return await health.where({
+        openid:event.openid
+      }).get()
+    }
   }
 }
