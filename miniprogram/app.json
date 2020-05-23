@@ -1,12 +1,14 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/form/index",
+    "pages/QRcode/QRcode"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "社区健康驿站",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

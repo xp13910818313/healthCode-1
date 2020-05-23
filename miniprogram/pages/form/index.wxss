@@ -1,0 +1,27 @@
+/* pages/form/index.wxss */
+.form{
+  padding: 10px;
+}
+.form .head{
+  text-align: center;
+}
+.form-item{
+  display: flex;
+}
+.form-item{
+  padding: 4px 0;
+}
+.form-item .form-item-title{
+  line-height: 31.39px;
+}
+.form-item .form-item-content{
+  flex: 1;
+  margin-left: 10px;
+  border-bottom: 1px solid #ddd;
+  padding: 4px 0;
+  font-size: 14px;
+  color: #333;
+}
+.form .submit-btn{
+  margin-top: 50px;
+}
