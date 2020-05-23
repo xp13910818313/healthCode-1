@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
   try {
     const result = await cloud.openapi.wxacode.get({
         path: `/pages/wenzhen/reg?openID=${event.openID}`,
-        width: 430
+        width: 460
       })
     console.log(result)
     const upload = await cloud.uploadFile({

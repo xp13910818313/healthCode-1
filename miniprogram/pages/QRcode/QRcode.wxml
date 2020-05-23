@@ -1,4 +1,4 @@
 <view class="code">
-<image id="canvas" src="{{miniImg}}"></image>
+<image id="canvas" mode="widthFix" src="{{miniImg}}"></image>
 <view class="openid">ID:{{userInfo.openid}}</view>
 </view>

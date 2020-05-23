@@ -12,8 +12,8 @@ page {
   background-color: #FFF;
 }
 #canvas {
-  display: flex;
-  height: 670rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 .openid{
   margin-top: 50rpx;
