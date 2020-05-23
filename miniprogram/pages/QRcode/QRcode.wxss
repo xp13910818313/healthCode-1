@@ -1,6 +1,6 @@
 /* pages/QRcode/QRcode.wxss */
 page {
-  background-color: #07c160;
+  background:linear-gradient(70deg,#11998e,#38ef7d)
 }
 .code {
   width: 100%;
@@ -11,10 +11,12 @@ page {
   flex-wrap: wrap;
   background-color: #FFF;
 }
+
 .code{
   padding: 10px;
   box-sizing: border-box;
 }
+
 #canvas {
   width: 100%;
   
@@ -22,4 +24,18 @@ page {
 .openid{
   margin-top: 50rpx;
   text-align: center;
+}
+
+.top {
+  margin-top: 30rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.top .icon {
+  width: 100rpx;
+  height: 100rpx;
+  vertical-align: middle;
+  padding-right:20rpx ;
 }

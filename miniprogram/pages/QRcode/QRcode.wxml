@@ -1,8 +1,8 @@
 <view class="code">
 	<block wx:if="{{showView}}">
-		<view class="code">
-			<image id="canvas" mode="widthFix" src="{{miniImg}}"></image>
-		</view>
-		<view class="openid">ID:{{ID}}</view>
-	</block>
+  <view class="code">
+		<image id="canvas" mode="widthFix" src="{{miniImg}}"></image>
+	</view>
+	<view class="openid">ID:{{ID}}</view>
+  </block>
 </view>
