@@ -2,3 +2,7 @@
 <image id="canvas" mode="widthFix" src="{{miniImg}}"></image>
 <view class="openid">ID:{{userInfo.openid}}</view>
 </view>
+<view class="top">
+  <image class="icon" src="../../image/13b0ef2f073e57c592bb62f630c7e4b.png"></image>
+  <text>社区健康驿站</text>
+</view>
