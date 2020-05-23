@@ -1,6 +1,8 @@
-<view class="box">
 <view class="code">
-<canvas id="canvas" style="width: 220px; height: 220px;" canvas-id="myQrcode"></canvas>
-</view>
-<view class="openid">ID:{{userInfo.openid}}</view>
+	<block wx:if="{{showView}}">
+		<view class="code">
+			<image id="canvas" mode="widthFix" src="{{miniImg}}"></image>
+		</view>
+		<view class="openid">ID:{{ID}}</view>
+	</block>
 </view>

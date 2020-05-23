@@ -34,7 +34,7 @@ page {
   width: 100%;
   margin-top: 120rpx;
 }
-
+/* 
 .saoyisao {
   padding: 15rpx 10rpx;
   position: fixed;
@@ -44,7 +44,7 @@ page {
   border-radius: 10px;
   font-size: 28rpx;
   color: #fff;
-}
+} */
 
 .list {
   width: calc((100% - 52rpx) / 3);

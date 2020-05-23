@@ -38,8 +38,9 @@ Page({
     })
     console.log(this.data.formData)
     let formData = {
-      ID: this.data.ID,
+      openid: this.data.ID,
       healthData: this.data.formData,
+      userInfo:this.data.userInfo,
       time: new Date()
     }
     console.log(formData)
@@ -91,11 +92,13 @@ Page({
       },
 
     }).then(res=>{
-      console.log('二维码参数查询==>',res)
+
+      console.log(res)
       this.setData({
         userInfo:res.result.data[0]
       })
     })
+
 
 
   },

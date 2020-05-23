@@ -8,8 +8,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    openID:'',
-    result: ''
+    showView:false,
+    result: '',
+    miniImg:'',
+    ID:'',
   },
   getScancode: function() {
     var _this = this;
@@ -37,14 +39,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     console.log(options.userInfo)
     if(options.userInfo){
       this.setData({
         userInfo:JSON.parse(options.userInfo),
-        openID:JSON.parse(options.userInfo).openid,
+        ID:JSON.parse(options.userInfo).openid,
       })
     }
-    var that = this
+    console.log('openID',that.data.openID)
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.cloud.callFunction({
+      name:'QRCode-get',
+      success:res=>{
+        console.log(res.result.fileID)
+        that.setData({
+          miniImg:res.result.fileID
+        })
+        wx.hideLoading({
+          complete: (res) => {
+            this.setData({
+              showView:true
+            })
+          },
+        })
+      }
+    })
     drawQrcode({
       width: 200,
       height: 200,
@@ -53,7 +75,7 @@ Page({
       text: `${that.data.userInfo}`,
       // 执行成功后
       
-      })
+    })
   },
 
   /**
