@@ -63,6 +63,13 @@
 					"pathName": "pages/QRcode/QRcode",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/OCR/OCR",
+					"pathName": "pages/OCR/OCR",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

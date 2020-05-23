@@ -106,6 +106,60 @@ Page({
 
   },
 
+// OCR文本识别
+OCR: function () {
+  var that = this
+  // 调起摄像头，选择照片
+  wx.chooseImage({
+    success: function(res) {
+      let filePath = res.tempFilePaths[0];
+      const FM = wx.getFileSystemManager();
+      FM.readFile({
+        filePath: filePath,
+        encoding: "base64",
+        success: res => {
+          let { data } = res;
+          wx.cloud.callFunction({
+            name: "ocr",
+            data: {
+              base64: data
+            }
+          })
+          .then( res => {
+            // console.log(JSON.parse(res.result));
+            var DATA = JSON.parse(res.result)
+            console.log(DATA.TextDetections)
+
+            console.log("获取数据form--》",that.data.formData)
+            
+            // 处理返回的数据
+            var arr = [];
+            for (var i=2;i<DATA.TextDetections.length;i++) {
+              // console.log(DATA.TextDetections[i])
+              // console.log(that.data.formData[i])
+              var obj = {}
+              // console.log('iiiiii',DATA.TextDetections[i].DetectedText)
+              var title = DATA.TextDetections[i].DetectedText
+              var num = title.replace(/[^0-9]/ig,"");     
+              var reg= /[\u4e00-\u9fa5]/gm
+              var txt = title.match(reg)
+              txt=txt.join('')
+              console.log('获取文本--->',txt)
+              console.log('获取数字--->',num)
+              obj.title=txt
+              obj.value=num
+              arr.push(obj)
+            }
+            that.setData({
+              formData:arr
+            })
+            console.log(arr)
+          })
+        }
+      })
+    },
+  })
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
