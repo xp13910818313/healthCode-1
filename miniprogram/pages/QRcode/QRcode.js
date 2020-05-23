@@ -49,9 +49,9 @@ Page({
     }
     console.log('openID',that.data.openID)
     wx.cloud.callFunction({
-      name:'demo',
+      name:'QRCode-get',
       success:res=>{
-        console.log(res)
+        console.log(res.result.fileID)
         that.setData({
           miniImg:res.result.fileID
         })
