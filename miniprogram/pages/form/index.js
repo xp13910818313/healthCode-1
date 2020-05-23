@@ -92,13 +92,16 @@ Page({
     wx.cloud.callFunction({
       name: 'demo',
       data: {
-        openid: '123'
+        openid: '123',
+        src:"/pages/wenzhen/reg"
       }
     }).then(res => {
       console.log(res.result.fileID)
       this.setData({
         url: res.result.fileID
       })
+    }).catch(e=>{
+      console.log(e)
     })
 
   },
