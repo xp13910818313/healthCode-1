@@ -9,12 +9,24 @@ exports.main = async (event, context) => {
 
   switch (event.type) {
     case 'get': {
+      if(event.openid){
+        return await cloud.database().collection('healthData').where({
+          openid:event.openid
+        }).orderBy('time','desc').field({
+         userInfo:false
+        }).get()
+      }
       return await cloud.database().collection('healthData').get()
     }
     case 'add': {
       return await cloud.database().collection('healthData').add({
         data: event.formData
       })
+    }
+    case 'count':{
+      return await cloud.database().collection('healthData').where({
+        openid:wxContext.OPENID
+      }).count()
     }
   }
 }

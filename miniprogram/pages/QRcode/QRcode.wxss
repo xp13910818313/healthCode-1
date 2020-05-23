@@ -1,32 +1,39 @@
 /* pages/QRcode/QRcode.wxss */
 page {
-  background:linear-gradient(70deg,#11998e,#38ef7d)
+  background:linear-gradient(70deg,#11998e,#38ef7d);
+  overflow:hidden;
 }
-.code {
-  width: 100%;
-  display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center;     /* 垂直居中 */
-  padding: 60rpx 0 60rpx 0;
-  flex-wrap: wrap;
-  background-color: #FFF;
+.code-page{
+  height: calc(100vh - 90px);
+  background-color: #fff;
+  padding-top: 50rpx;
+  box-sizing: border-box;
+}
+
+.code{
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 60rpx;
 }
 
 #canvas {
   width: 100%;
-  box-sizing: border-box;
+  height: auto;
+  display: block;
+  
 }
 .openid{
-  margin-top: 50rpx;
+  padding-bottom: 30rpx;
   text-align: center;
+  background-color: #fff;
 }
 
 .top {
-  margin-top: 30rpx;
   text-align: center;
   color: #fff;
   font-size: 35rpx;
   font-weight: bold;
+  padding: 20px 0;
 }
 .top .icon {
   width: 100rpx;

@@ -66,9 +66,16 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/OCR/OCR",
-					"pathName": "pages/OCR/OCR",
+
+					"name": "pages/QRcode/QRcode",
+					"pathName": "pages/QRcode/QRcode",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/record/record",
+					"pathName": "pages/record/record",
 					"scene": null
 				}
 			]

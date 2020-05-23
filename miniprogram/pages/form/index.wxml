@@ -1,8 +1,14 @@
 <view class='form'>
 	<view class="head">
+		<view class="avatar">
+			<view class="avatar-img">
+				<image mode="widthFix" src="{{userInfo.userInfo.avatarUrl}}"></image>
+			</view>
+			<view class="nickName"><text>{{userInfo.userInfo.nickName}}</text></view>
+		</view>
 		<view class="user-id">
 			<text>ID:</text>
-			<text class="id-content">{{ID}}</text>
+			<text class="id-content">{{userInfo.userID}}</text>
 		</view>
 	</view>
 	<view class="form-list">
@@ -14,6 +20,6 @@
 	<view class="submit-btn">
 		<button type="primary" bindtap="submitForm">提交</button>
 	</view>
-  <image src="{{url}}"></image>
 </view>
 <button bindtap="OCR">上传图片</button>
+

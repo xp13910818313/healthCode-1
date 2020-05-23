@@ -29,8 +29,6 @@ App({
               get:"oneself"
             },
             success: res => {
-              console.log(res)
-             
               this.globalData.userInfo = res.result.data[0]
               this.globalData.isHas = s.authSetting['scope.userInfo']
               wx.hideLoading({
