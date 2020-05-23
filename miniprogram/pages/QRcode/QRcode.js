@@ -51,7 +51,7 @@ Page({
     wx.cloud.callFunction({
       name:'demo',
       success:res=>{
-        console.log(res)
+        console.log("二维码",res)
         that.setData({
           miniImg:res.result.fileID
         })

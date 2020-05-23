@@ -43,16 +43,6 @@ Page({
     })
 
   },
-  getScancode: function () {
-    // 允许从相机和相册扫码
-    wx.scanCode({
-      success: (res) => {
-        wx.navigateTo({
-          url: '../form/index?openid=' + res.result
-        })
-      }
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */

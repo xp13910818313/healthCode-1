@@ -21,7 +21,6 @@ App({
     // 获取用户信息
     wx.getSetting({
       success: s => {
-        console.log("是否获取权限",s.authSetting['scope.userInfo'])
         if (s.authSetting['scope.userInfo']) {
           wx.cloud.callFunction({
             name: "health_userInfo",
