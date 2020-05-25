@@ -1,12 +1,15 @@
 /* pages/QRcode/QRcode.wxss */
 page {
-  background:linear-gradient(70deg,#11998e,#38ef7d)
+  background: linear-gradient(70deg, #11998e, #38ef7d)
 }
+
 .code {
   width: 100%;
   display: flex;
-  justify-content: center; /* 水平居中 */
-  align-items: center;     /* 垂直居中 */
+  justify-content: center;
+  /* 水平居中 */
+  align-items: center;
+  /* 垂直居中 */
   padding: 60rpx 0 60rpx 0;
   flex-wrap: wrap;
   background-color: #FFF;
@@ -16,7 +19,8 @@ page {
   width: 100%;
   box-sizing: border-box;
 }
-.openid{
+
+.openid {
   margin-top: 50rpx;
   text-align: center;
 }
@@ -28,9 +32,10 @@ page {
   font-size: 35rpx;
   font-weight: bold;
 }
+
 .top .icon {
   width: 100rpx;
   height: 100rpx;
   vertical-align: middle;
-  padding-right:20rpx ;
+  padding-right: 20rpx;
 }
