@@ -3,7 +3,29 @@
   padding: 10px;
 }
 .form .head{
-  text-align: center;
+  /* text-align: center; */
+  padding: 10px 0;
+}
+.avatar-img{
+  width: 90rpx;
+}
+.avatar-img image{
+  width: 100%;
+}
+.avatar{
+  display: flex;
+}
+.avater .nickName{
+  flex: 1;
+
+}
+.nickName text{
+  line-height: 90rpx;
+  padding: 0 10px;
+}
+.user-id{
+  font-size: 14px;
+  color: #6b6b6b;
 }
 .form-item{
   display: flex;

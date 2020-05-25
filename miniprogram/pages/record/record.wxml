@@ -1,0 +1,32 @@
+<view class="record-page">
+	<view class="head">
+		<view class="avatar">
+			<view class="avatar-img">
+				<image mode="widthFix" src="{{userInfo.userInfo.avatarUrl}}"></image>
+			</view>
+			<view class="nickName">
+				<view class="name">{{userInfo.userInfo.nickName}}</view>
+				<view class="user-id">
+					<text>ID:</text>
+					<text class="id-content">{{userInfo.userID}}</text>
+				</view>
+			</view>
+		</view>
+
+	</view>
+	<view class="list">
+		<view class="list-item" wx:for="{{dataList}}">
+			<view class="time">
+				<text>时间:</text>
+				<text>{{item.time}}</text>
+			</view>
+			<view class="quota">
+				<view class="content" wx:for="{{item.healthData}}" wx:for-item="itemName">
+					<text>{{itemName.title}}:</text>
+					<text>{{itemName.value}}</text>
+				</view>
+			</view>
+
+		</view>
+	</view>
+</view>

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: '',
+    userInfo: null,
     url: '',
     ID: '',
     formData: [{
@@ -38,8 +38,9 @@ Page({
     })
     console.log(this.data.formData)
     let formData = {
-      ID: this.data.ID,
+      openid: this.data.ID,
       healthData: this.data.formData,
+      userInfo:this.data.userInfo,
       time: new Date()
     }
     console.log(formData)
@@ -78,34 +79,85 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let openid=options.openid?options.openid:'osXMd5M2TCZ-n7oTTwA8Ro1OQ7fQ'
+    console.log(openid)
+    this.setData({
+      ID:openid
+    })
     wx.cloud.callFunction({
       name: "health_userInfo",
       data: {
         fun: "get",
         get: "otherPeople",
-        openid: 'osXMd5M2TCZ-n7oTTwA8Ro1OQ7fQ'
+        openid: openid
       },
 
     }).then(res=>{
+
       console.log(res)
-    })
-    wx.cloud.callFunction({
-      name: 'demo',
-      data: {
-        openid: '123',
-        src:"/pages/wenzhen/reg"
-      }
-    }).then(res => {
-      console.log(res.result.fileID)
       this.setData({
-        url: res.result.fileID
+        userInfo:res.result.data[0]
       })
-    }).catch(e=>{
-      console.log(e)
     })
+
+
 
   },
 
+// OCR文本识别
+OCR: function () {
+  var that = this
+  // 调起摄像头，选择照片
+  wx.chooseImage({
+    success: function(res) {
+      let filePath = res.tempFilePaths[0];
+      const FM = wx.getFileSystemManager();
+      FM.readFile({
+        filePath: filePath,
+        encoding: "base64",
+        success: res => {
+          let { data } = res;
+          wx.cloud.callFunction({
+            name: "ocr",
+            data: {
+              base64: data
+            }
+          })
+          .then( res => {
+            // console.log(JSON.parse(res.result));
+            var DATA = JSON.parse(res.result)
+            console.log(DATA.TextDetections)
+
+            console.log("获取数据form--》",that.data.formData)
+            
+            // 处理返回的数据
+            var arr = [];
+            for (var i=2;i<DATA.TextDetections.length;i++) {
+              // console.log(DATA.TextDetections[i])
+              // console.log(that.data.formData[i])
+              var obj = {}
+              // console.log('iiiiii',DATA.TextDetections[i].DetectedText)
+              var title = DATA.TextDetections[i].DetectedText
+              var num = title.replace(/[^0-9]/ig,"");     
+              var reg= /[\u4e00-\u9fa5]/gm
+              var txt = title.match(reg)
+              txt=txt.join('')
+              console.log('获取文本--->',txt)
+              console.log('获取数字--->',num)
+              obj.title=txt
+              obj.value=num
+              arr.push(obj)
+            }
+            that.setData({
+              formData:arr
+            })
+            console.log(arr)
+          })
+        }
+      })
+    },
+  })
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成

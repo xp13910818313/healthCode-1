@@ -1,0 +1,56 @@
+.record-page{
+  padding: 10px;
+}
+.head{
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 1px 3px #ddd;
+}
+.avatar-img{
+  width: 90rpx;
+}
+.avatar-img image{
+  width: 100%;
+}
+.avatar{
+  display: flex;
+}
+.avater .nickName{
+  flex: 1;
+
+}
+.nickName{
+  padding: 0 10px;
+}
+.nickName .name,.nickName .user-id{
+  line-height: 45rpx;
+}
+
+.user-id{
+  font-size: 14px;
+  color: #6b6b6b;
+}
+.list{
+  font-size: 14px;
+  color:#6b6b6b;
+  padding-top: calc(90rpx + 20px)
+}
+.list-item{
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+.list-item:last-child{
+  border-bottom:none
+}
+.quota{
+  display: flex;
+  flex-wrap: wrap;
+}
+.quota .content{
+  width: 50%;
+  padding: 4px 0;
+}

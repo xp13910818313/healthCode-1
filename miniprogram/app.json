@@ -1,8 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/OCR/OCR",
     "pages/form/index",
-    "pages/QRcode/QRcode"
+    "pages/QRcode/QRcode",
+    "pages/record/record"
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
