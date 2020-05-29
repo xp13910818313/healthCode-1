@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show:true,
     userInfo: null,
     url: '',
     ID: '',
@@ -82,7 +83,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let openid = options.openID ? options.openID : 'o7CqC4tuyzdJoM-feijSFwmdkIEE'
+    wx.cloud.callFunction({
+      name:'isShow'
+    }).then(res=>{
+      console.log(res.result.data[0].show)
+      this.setData({
+        show:res.result.data[0].show
+      })
+    })
+    let openid = options.openid
     console.log(openid)
     this.setData({
       openid: openid
@@ -124,7 +133,6 @@ OCR: function () {
             }
           })
           .then( res => {
-            // console.log(JSON.parse(res.result));
             var DATA = JSON.parse(res.result)
             console.log(DATA.TextDetections)
 
@@ -135,11 +143,9 @@ OCR: function () {
             var reg= /[\u4e00-\u9fa5]/gm;
             var te = /[\u4e00-\u9fa5]+[0-9]/;
             for (var i=0;i<DATA.TextDetections.length;i++) {
-              // console.log(DATA.TextDetections[i].DetectedText)
               var DetectedText = DATA.TextDetections[i].DetectedText
               if(te.test(DetectedText)){
                 var obj = {}
-                // console.log(DetectedText)
                 var txt = DetectedText.match(reg)
                 var num = DetectedText.replace(/[^0-9]/ig,"");
                 txt=txt.join('')

@@ -52,6 +52,9 @@ Page({
     })
     wx.cloud.callFunction({
       name:'QRCode-get',
+      data:{
+        openid:that.data.userInfo.openid
+      },
       success:res=>{
         console.log(res.result.fileID)
         that.setData({

@@ -1,6 +1,6 @@
 <view class='form'>
 	<view class="head">
-		<view class="avatar">
+		<view class="avatar" wx:if="{{userInfo}}">
 			<view class="avatar-img">
 				<image mode="widthFix" src="{{userInfo.userInfo.avatarUrl}}"></image>
 			</view>
@@ -22,6 +22,7 @@
 	</view>
 </view>
 <button bindtap="OCR">上传图片</button>
+<view wx:if='{{show}}'>{{openid}}</view>
 
 
 
