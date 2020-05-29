@@ -23,3 +23,5 @@
 </view>
 <button bindtap="OCR">上传图片</button>
 
+
+

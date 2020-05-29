@@ -11,7 +11,7 @@ Page({
     showView:false,
     result: '',
     miniImg:'',
-    ID:'',
+    ID:null,
   },
   getScancode: function() {
     var _this = this;
@@ -64,6 +64,9 @@ Page({
             })
           },
         })
+      },
+      fail:err=>{
+        console.log(err)
       }
     })
     drawQrcode({

@@ -8,6 +8,7 @@ Page({
     userInfo: null,
     url: '',
     ID: '',
+    openid:null,
     formData: [{
       title: '血压',
       value: ''
@@ -29,18 +30,19 @@ Page({
     }, {
       title: '尿酸',
       value: ''
-    }, ]
+    }]
 
   },
+  // 表单提交
   submitForm() {
     wx.showLoading({
       title: '正在提交',
     })
     console.log(this.data.formData)
     let formData = {
-      openid: this.data.ID,
+      openid: this.data.openid,
       healthData: this.data.formData,
-      userInfo:this.data.userInfo,
+      userInfo: this.data.userInfo,
       time: new Date()
     }
     console.log(formData)
@@ -67,6 +69,7 @@ Page({
       })
     })
   },
+  //表单输入监听
   formChange(e) {
     let formData = this.data.formData
     formData[e.currentTarget.dataset.index].value = e.detail.value
@@ -79,10 +82,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let openid=options.openid?options.openid:'osXMd5M2TCZ-n7oTTwA8Ro1OQ7fQ'
+    let openid = options.openID ? options.openID : 'o7CqC4tuyzdJoM-feijSFwmdkIEE'
     console.log(openid)
     this.setData({
-      ID:openid
+      openid: openid
     })
     wx.cloud.callFunction({
       name: "health_userInfo",
@@ -92,16 +95,12 @@ Page({
         openid: openid
       },
 
-    }).then(res=>{
-
+    }).then(res => {
       console.log(res)
       this.setData({
-        userInfo:res.result.data[0]
+        userInfo: res.result.data[0]
       })
     })
-
-
-
   },
 
 // OCR文本识别
@@ -111,6 +110,7 @@ OCR: function () {
   wx.chooseImage({
     success: function(res) {
       let filePath = res.tempFilePaths[0];
+      console.log(filePath)
       const FM = wx.getFileSystemManager();
       FM.readFile({
         filePath: filePath,
@@ -132,26 +132,28 @@ OCR: function () {
             
             // 处理返回的数据
             var arr = [];
-            for (var i=2;i<DATA.TextDetections.length;i++) {
-              // console.log(DATA.TextDetections[i])
-              // console.log(that.data.formData[i])
-              var obj = {}
-              // console.log('iiiiii',DATA.TextDetections[i].DetectedText)
-              var title = DATA.TextDetections[i].DetectedText
-              var num = title.replace(/[^0-9]/ig,"");     
-              var reg= /[\u4e00-\u9fa5]/gm
-              var txt = title.match(reg)
-              txt=txt.join('')
-              console.log('获取文本--->',txt)
-              console.log('获取数字--->',num)
-              obj.title=txt
-              obj.value=num
-              arr.push(obj)
+            var reg= /[\u4e00-\u9fa5]/gm;
+            var te = /[\u4e00-\u9fa5]+[0-9]/;
+            for (var i=0;i<DATA.TextDetections.length;i++) {
+              // console.log(DATA.TextDetections[i].DetectedText)
+              var DetectedText = DATA.TextDetections[i].DetectedText
+              if(te.test(DetectedText)){
+                var obj = {}
+                // console.log(DetectedText)
+                var txt = DetectedText.match(reg)
+                var num = DetectedText.replace(/[^0-9]/ig,"");
+                txt=txt.join('')
+                console.log('获取文本--->',txt)
+                console.log('获取数字--->',num)
+                obj.title=txt
+                obj.value=num
+                arr.push(obj)
+              }
             }
+            console.log(arr)
             that.setData({
               formData:arr
             })
-            console.log(arr)
           })
         }
       })
