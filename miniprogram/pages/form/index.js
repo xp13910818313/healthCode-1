@@ -5,11 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show:true,
+    show: true,
     userInfo: null,
     url: '',
     ID: '',
-    openid:null,
+    openid: null,
     formData: [{
       title: '血压',
       value: ''
@@ -84,11 +84,11 @@ Page({
    */
   onLoad: function (options) {
     wx.cloud.callFunction({
-      name:'isShow'
-    }).then(res=>{
+      name: 'isShow'
+    }).then(res => {
       console.log(res.result.data[0].show)
       this.setData({
-        show:res.result.data[0].show
+        show: res.result.data[0].show
       })
     })
     let openid = decodeURIComponent(options.openid)
@@ -112,60 +112,62 @@ Page({
     })
   },
 
-// OCR文本识别
-OCR: function () {
-  var that = this
-  // 调起摄像头，选择照片
-  wx.chooseImage({
-    success: function(res) {
-      let filePath = res.tempFilePaths[0];
-      console.log(filePath)
-      const FM = wx.getFileSystemManager();
-      FM.readFile({
-        filePath: filePath,
-        encoding: "base64",
-        success: res => {
-          let { data } = res;
-          wx.cloud.callFunction({
-            name: "ocr",
-            data: {
-              base64: data
-            }
-          })
-          .then( res => {
-            var DATA = JSON.parse(res.result)
-            console.log(DATA.TextDetections)
+  // OCR文本识别
+  OCR: function () {
+    var that = this
+    // 调起摄像头，选择照片
+    wx.chooseImage({
+      success: function (res) {
+        let filePath = res.tempFilePaths[0];
+        console.log(filePath)
+        const FM = wx.getFileSystemManager();
+        FM.readFile({
+          filePath: filePath,
+          encoding: "base64",
+          success: res => {
+            let {
+              data
+            } = res;
+            wx.cloud.callFunction({
+                name: "ocr",
+                data: {
+                  base64: data
+                }
+              })
+              .then(res => {
+                var DATA = JSON.parse(res.result)
+                console.log(DATA.TextDetections)
 
-            console.log("获取数据form--》",that.data.formData)
-            
-            // 处理返回的数据
-            var arr = [];
-            var reg= /[\u4e00-\u9fa5]/gm;
-            var te = /[\u4e00-\u9fa5]+[0-9]/;
-            for (var i=0;i<DATA.TextDetections.length;i++) {
-              var DetectedText = DATA.TextDetections[i].DetectedText
-              if(te.test(DetectedText)){
-                var obj = {}
-                var txt = DetectedText.match(reg)
-                var num = DetectedText.replace(/[^0-9]/ig,"");
-                txt=txt.join('')
-                console.log('获取文本--->',txt)
-                console.log('获取数字--->',num)
-                obj.title=txt
-                obj.value=num
-                arr.push(obj)
-              }
-            }
-            console.log(arr)
-            that.setData({
-              formData:arr
-            })
-          })
-        }
-      })
-    },
-  })
-},
+                console.log("获取数据form--》", that.data.formData)
+
+                // 处理返回的数据
+                var arr = [];
+                var reg = /[\u4e00-\u9fa5]/gm;
+                var te = /[\u4e00-\u9fa5]+[0-9]/;
+                for (var i = 0; i < DATA.TextDetections.length; i++) {
+                  var DetectedText = DATA.TextDetections[i].DetectedText
+                  if (te.test(DetectedText)) {
+                    var obj = {}
+                    var txt = DetectedText.match(reg)
+                    var num = DetectedText.replace(/[^0-9]/ig, "");
+                    txt = txt.join('')
+                    console.log('获取文本--->', txt)
+                    console.log('获取数字--->', num)
+                    obj.title = txt
+                    obj.value = num
+                    arr.push(obj)
+                  }
+                }
+                console.log(arr)
+                that.setData({
+                  formData: arr
+                })
+              })
+          }
+        })
+      },
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
