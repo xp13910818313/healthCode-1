@@ -91,7 +91,7 @@ Page({
         show:res.result.data[0].show
       })
     })
-    let openid = options.openid
+    let openid = decodeURIComponent(options.openid)
     console.log(openid)
     this.setData({
       openid: openid
