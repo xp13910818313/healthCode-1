@@ -132,26 +132,28 @@ OCR: function () {
             
             // 处理返回的数据
             var arr = [];
-            for (var i=2;i<DATA.TextDetections.length;i++) {
-              // console.log(DATA.TextDetections[i])
-              // console.log(that.data.formData[i])
-              var obj = {}
-              // console.log('iiiiii',DATA.TextDetections[i].DetectedText)
-              var title = DATA.TextDetections[i].DetectedText
-              var num = title.replace(/[^0-9]/ig,"");     
-              var reg= /[\u4e00-\u9fa5]/gm
-              var txt = title.match(reg)
-              txt=txt.join('')
-              console.log('获取文本--->',txt)
-              console.log('获取数字--->',num)
-              obj.title=txt
-              obj.value=num
-              arr.push(obj)
+            var reg= /[\u4e00-\u9fa5]/gm;
+            var te = /[\u4e00-\u9fa5]+[0-9]/;
+            for (var i=0;i<DATA.TextDetections.length;i++) {
+              // console.log(DATA.TextDetections[i].DetectedText)
+              var DetectedText = DATA.TextDetections[i].DetectedText
+              if(te.test(DetectedText)){
+                var obj = {}
+                // console.log(DetectedText)
+                var txt = DetectedText.match(reg)
+                var num = DetectedText.replace(/[^0-9]/ig,"");
+                txt=txt.join('')
+                console.log('获取文本--->',txt)
+                console.log('获取数字--->',num)
+                obj.title=txt
+                obj.value=num
+                arr.push(obj)
+              }
             }
+            console.log(arr)
             that.setData({
               formData:arr
             })
-            console.log(arr)
           })
         }
       })
