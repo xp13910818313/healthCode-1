@@ -35,9 +35,10 @@ page {
   font-weight: bold;
   padding: 20px 0;
 }
+
 .top .icon {
   width: 100rpx;
   height: 100rpx;
   vertical-align: middle;
-  padding-right:20rpx ;
+  padding-right: 20rpx;
 }

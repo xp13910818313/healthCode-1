@@ -44,6 +44,7 @@ page {
   margin: 0 20rpx 20rpx 0;
   float: left;
   border-radius: 10rpx;
+  box-shadow: 0 0 3px #999;
 }
 
 .list:nth-child(3n) {
