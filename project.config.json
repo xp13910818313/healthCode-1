@@ -54,8 +54,13 @@
 					"id": 0,
 					"name": "pages/form/index",
 					"pathName": "pages/form/index",
+<<<<<<< HEAD
+					"query": "openid=o7CqC4inLsYFQTFb0kND_61y-qGw",
+					"scene": null
+=======
 					"query": "openid=o7CqC4tMsBWS_id90ZYd6ltpHQcw",
 					"scene": 1011
+>>>>>>> fe0768fa918cf05d627162dea9cbf44547f5e32e
 				},
 				{
 					"id": -1,
@@ -80,8 +85,8 @@
 				},
 				{
 					"id": 4,
-					"name": "pages/form/index",
-					"pathName": "pages/form/index",
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"query": "openid=osXMd5IDKmmbNs3d8e",
 					"scene": null
 				}

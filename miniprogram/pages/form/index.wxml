@@ -19,10 +19,7 @@
 	</view>
 	<view class="submit-btn">
 		<button type="primary" bindtap="submitForm">提交</button>
+		<button class="cc" bindtap="OCR">上传图片</button>
 	</view>
 </view>
-<button bindtap="OCR">上传图片</button>
 <view wx:if='{{show}}'>openid::{{openid}}</view>
-
-
-

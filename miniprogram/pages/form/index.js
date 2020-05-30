@@ -99,6 +99,7 @@ Page({
     })
     let openid = decodeURIComponent(options.openid)
     console.log(openid)
+
     this.setData({
       openid: openid
     })
