@@ -6,7 +6,7 @@ Page({
    */
   data: {
     show: true,
-    userInfo: null,
+    userInfo: {},
     url: '',
     ID: '',
     openid: null,
@@ -83,6 +83,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
     wx.cloud.callFunction({
       name: 'isShow'
     }).then(res => {
@@ -96,16 +97,17 @@ Page({
     this.setData({
       openid: openid
     })
+    console.log(this.data.openid)
     wx.cloud.callFunction({
       name: "health_userInfo",
       data: {
         fun: "get",
         get: "otherPeople",
-        openid: openid
+        openid: that.data.openid
       },
 
     }).then(res => {
-      console.log(res)
+      console.log(res.result)
       this.setData({
         userInfo: res.result.data[0]
       })

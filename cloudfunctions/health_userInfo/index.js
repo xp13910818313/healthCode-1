@@ -30,7 +30,8 @@ exports.main = async (event, context) => {
         openid: wxContext.OPENID,
       }).get()
     } else if (event.get == "otherPeople") {
-      return await health.where({
+      
+      return await cloud.database().collection('health_userInfo').where({
         openid: event.openid
       }).get()
     }
