@@ -6,7 +6,7 @@ Page({
    */
   data: {
     show: true,
-    userInfo: null,
+    userInfo: {},
     url: '',
     ID: '',
     openid: null,
@@ -98,6 +98,7 @@ Page({
     this.setData({
       openid: openid
     })
+    console.log(this.data.openid)
     wx.cloud.callFunction({
       name: "health_userInfo",
       data: {
@@ -107,7 +108,7 @@ Page({
       },
 
     }).then(res => {
-      console.log(res)
+      console.log(res.result)
       this.setData({
         userInfo: res.result.data[0]
       })
