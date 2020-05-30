@@ -8,12 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showView:false,
+    showView: false,
     result: '',
-    miniImg:'',
-    ID:null,
+    miniImg: '',
+    ID: null,
   },
-  getScancode: function() {
+  getScancode: function () {
     var _this = this;
     // 允许从相机和相册扫码
     wx.scanCode({
@@ -41,34 +41,33 @@ Page({
   onLoad: function (options) {
     var that = this
     console.log(options.userInfo)
-    if(options.userInfo){
+    if (options.userInfo) {
       this.setData({
-        userInfo:JSON.parse(options.userInfo),
-        ID:JSON.parse(options.userInfo).openid,
+        userInfo: JSON.parse(options.userInfo)
       })
     }
     wx.showLoading({
       title: '加载中',
     })
     wx.cloud.callFunction({
-      name:'QRCode-get',
-      data:{
-        openid:that.data.userInfo.openid
+      name: 'QRCode-get',
+      data: {
+        openid: that.data.userInfo.openid
       },
-      success:res=>{
+      success: res => {
         console.log(res.result.fileID)
         that.setData({
-          miniImg:res.result.fileID
+          miniImg: res.result.fileID
         })
         wx.hideLoading({
           complete: (res) => {
             this.setData({
-              showView:true
+              showView: true
             })
           },
         })
       },
-      fail:err=>{
+      fail: err => {
         console.log(err)
       }
     })
@@ -79,11 +78,11 @@ Page({
       // ctx: wx.createCanvasContext('myQrcode'),
       text: `${that.data.userInfo}`,
       // 执行成功后
-      
+
     })
   },
 
-  goto:function() {
+  goto: function () {
     wx.navigateTo({
       url: '../OCR/OCR',
     })

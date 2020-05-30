@@ -83,6 +83,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.cloud.callFunction({
+      name: 'login'
+    }).then(res => {
+      console.log('unionid==>', res.result)
+    })
     let that = this
     wx.cloud.callFunction({
       name: 'isShow'
