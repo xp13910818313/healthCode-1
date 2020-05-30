@@ -8,12 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showView:false,
+    showView: false,
     result: '',
-    miniImg:'',
-    ID:null,
+    miniImg: '',
+    ID: null,
   },
-  getScancode: function() {
+  getScancode: function () {
     var _this = this;
     // 允许从相机和相册扫码
     wx.scanCode({
@@ -40,50 +40,61 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    console.log(options.userInfo)
-    if(options.userInfo){
-      this.setData({
-        userInfo:JSON.parse(options.userInfo),
-        ID:JSON.parse(options.userInfo).openid,
-      })
-    }
+    // console.log(options.openid)
+    // if(options.openid){
+
     wx.showLoading({
       title: '加载中',
     })
     wx.cloud.callFunction({
-      name:'QRCode-get',
-      data:{
-        openid:that.data.userInfo.openid
-      },
-      success:res=>{
-        console.log(res.result.fileID)
-        that.setData({
-          miniImg:res.result.fileID
-        })
-        wx.hideLoading({
-          complete: (res) => {
-            this.setData({
-              showView:true
-            })
-          },
-        })
-      },
-      fail:err=>{
-        console.log(err)
+      name: "health_userInfo",
+      data: {
+        fun: "get",
+        get: "oneself"
       }
+    }).then(r => {
+
+      this.setData({
+        userInfo: r.result.data[0]
+      })
+      console.log("userinfo", that.data.userInfo)
+      wx.cloud.callFunction({
+        name: 'QRCode-get',
+        data: {
+          openid: that.data.userInfo.openid
+        },
+        success: res => {
+          console.log(res.result.fileID)
+          that.setData({
+            miniImg: res.result.fileID
+          })
+          wx.hideLoading({
+            complete: (res) => {
+              this.setData({
+                showView: true
+              })
+            },
+          })
+        },
+        fail: err => {
+          console.log(err)
+        }
+      })
+      drawQrcode({
+        width: 200,
+        height: 200,
+        canvasId: 'myQrcode',
+        // ctx: wx.createCanvasContext('myQrcode'),
+        text: `${that.data.userInfo}`,
+        // 执行成功后
+
+      })
     })
-    drawQrcode({
-      width: 200,
-      height: 200,
-      canvasId: 'myQrcode',
-      // ctx: wx.createCanvasContext('myQrcode'),
-      text: `${that.data.userInfo}`,
-      // 执行成功后
-      
-    })
+    // }
+
   },
 
-  goto:function() {
+  goto: function () {
     wx.navigateTo({
       url: '../OCR/OCR',
     })

@@ -11,10 +11,9 @@ Page({
         dialogShow: true
       })
     } else {
-      console.log("生产二维码", _this.data.userInfo)
-      let userInfo = JSON.stringify(_this.data.userInfo)
+      console.log("生产二维码", _this.data.userInfo.openid)
       wx.navigateTo({
-        url: '/pages/QRcode/QRcode?userInfo=' + userInfo,
+        url: '/pages/QRcode/QRcode?userInfo=' + _this.data.userInfo.openid,
       })
     }
   },
