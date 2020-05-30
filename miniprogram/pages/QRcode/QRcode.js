@@ -40,46 +40,54 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    console.log(options.userInfo)
-    if (options.userInfo) {
-      this.setData({
-        userInfo: JSON.parse(options.userInfo)
-      })
-    }
     wx.showLoading({
       title: '加载中',
     })
     wx.cloud.callFunction({
-      name: 'QRCode-get',
+      name: "health_userInfo",
       data: {
-        openid: that.data.userInfo.openid
-      },
-      success: res => {
-        console.log(res.result.fileID)
-        that.setData({
-          miniImg: res.result.fileID
-        })
-        wx.hideLoading({
-          complete: (res) => {
-            this.setData({
-              showView: true
-            })
-          },
-        })
-      },
-      fail: err => {
-        console.log(err)
+        fun: "get",
+        get: "oneself"
       }
-    })
-    drawQrcode({
-      width: 200,
-      height: 200,
-      canvasId: 'myQrcode',
-      // ctx: wx.createCanvasContext('myQrcode'),
-      text: `${that.data.userInfo}`,
-      // 执行成功后
+    }).then(r => {
+      this.setData({
+        userInfo: r.result.data[0]
+      })
+      console.log("userinfo", that.data.userInfo)
+      wx.cloud.callFunction({
+        name: 'QRCode-get',
+        data: {
+          openid: that.data.userInfo.openid
+        },
+        success: res => {
+          console.log(res.result.fileID)
+          that.setData({
+            miniImg: res.result.fileID
+          })
+          wx.hideLoading({
+            complete: (res) => {
+              this.setData({
+                showView: true
+              })
+            },
+          })
+        },
+        fail: err => {
+          console.log(err)
+        }
+      })
+      drawQrcode({
+        width: 200,
+        height: 200,
+        canvasId: 'myQrcode',
+        // ctx: wx.createCanvasContext('myQrcode'),
+        text: `${that.data.userInfo}`,
+        // 执行成功后
 
+      })
     })
+    // }
+
   },
 
   goto: function () {

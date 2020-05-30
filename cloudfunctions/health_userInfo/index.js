@@ -13,13 +13,13 @@ exports.main = async (event, context) => {
     }).get()).data.length
 
     let userLen = await (await health.get()).data.length + 1
-    
+    let userInfo = event.userInfo
+    userInfo.userID = event.userID + userLen
     if (len == 0) {
       return await health.add({
         data: {
           openid: wxContext.OPENID,
-          userInfo: event.userInfo,
-          userID: event.userID + userLen
+          userInfo: userInfo
         }
       })
     } else return "用户名已存在"
