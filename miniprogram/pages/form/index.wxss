@@ -47,3 +47,6 @@
 .form .submit-btn{
   margin-top: 50px;
 }
+.cc{
+  margin-top: 10px;
+}

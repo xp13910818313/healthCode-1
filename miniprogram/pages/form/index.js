@@ -83,6 +83,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
     wx.cloud.callFunction({
       name: 'isShow'
     }).then(res => {
@@ -93,6 +94,7 @@ Page({
     })
     let openid = decodeURIComponent(options.openid)
     console.log(openid)
+
     this.setData({
       openid: openid
     })
@@ -101,7 +103,7 @@ Page({
       data: {
         fun: "get",
         get: "otherPeople",
-        openid: openid
+        openid: that.data.openid
       },
 
     }).then(res => {
