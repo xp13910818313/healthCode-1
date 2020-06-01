@@ -15,8 +15,13 @@ exports.main = async (event, context) => {
         }).orderBy('time','desc').field({
          userInfo:false
         }).get()
+      } else if(event.mydata){
+        return await cloud.database().collection('healthData').where({
+          openid:wxContext.OPENID
+        }).get()
       }
       return await cloud.database().collection('healthData').get()
+      
     }
     case 'add': {
       return await cloud.database().collection('healthData').add({

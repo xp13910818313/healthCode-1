@@ -1,6 +1,6 @@
 
 <view class="index">
-	<view class="title">社区健康驿站1.0.3版本</view>
+	<view class="title">社区健康驿站</view>
 	<view class="list-box clearfix">
 		<view class="list">血压</view>
 		<view class="list">视力</view>
@@ -15,6 +15,7 @@
 			我的健康码
 		</button>
 		<view class="mine" bindtap="toRecord" data-btn="record">我的体测记录</view>
+		<view class="banben">1.0.1版本</view>
 	</view>
 	<mp-auth show="{{dialogShow}}" bindgetUserInfo="bindgetuserinfo"></mp-auth>
 </view>

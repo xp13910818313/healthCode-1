@@ -13,12 +13,21 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    console.log(getApp().globalData.userInfo)
-    if (getApp().globalData.userInfo) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.cloud.callFunction({
+      name: 'health_userInfo',
+      data: {
+        fun: 'get',
+        get: 'oneself'
+      }
+    }).then(res => {
+      console.log('我的用户信息==>', res.result.data)
       this.setData({
-        userInfo: getApp().globalData.userInfo
+        userInfo: res.result.data[0]
       })
-    }
+    })
 
     wx.cloud.callFunction({
       name: 'healthData',
@@ -31,7 +40,7 @@ Page({
         name: 'healthData',
         data: {
           type: 'get',
-          openid: that.data.userInfo.openid
+          mydata: "mydata"
         }
       }).then(res => {
         console.log('记录查询==>', res.result.data)
@@ -39,7 +48,10 @@ Page({
           elem.time = `${new Date(elem.time).getFullYear()}-${new Date(elem.time).getMonth()+1>=10?new Date(elem.time).getMonth()+1:'0'+(new Date(elem.time).getMonth()+1)}-${new Date(elem.time).getDate()>=10?new Date(elem.time).getDate():'0'+new Date(elem.time).getDate()} ${new Date(elem.time).getHours()>=10?new Date(elem.time).getHours():'0'+new Date(elem.time).getHours()}:${new Date(elem.time).getMinutes()>=10?new Date(elem.time).getMinutes():'0'+new Date(elem.time).getMinutes()}:${new Date(elem.time).getSeconds()>=10?new Date(elem.time).getSeconds():'0'+new Date(elem.time).getSeconds()}`
         });
         that.setData({
-          dataList: res.result.data
+          dataList: res.result.data,
+        })
+        wx.hideLoading({
+          complete: (res) => {},
         })
       })
     })
