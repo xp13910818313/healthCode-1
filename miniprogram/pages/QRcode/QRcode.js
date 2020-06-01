@@ -40,9 +40,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    // console.log(options.openid)
-    // if(options.openid){
-
     wx.showLoading({
       title: '加载中',
     })
@@ -53,7 +50,6 @@ Page({
         get: "oneself"
       }
     }).then(r => {
-
       this.setData({
         userInfo: r.result.data[0]
       })
