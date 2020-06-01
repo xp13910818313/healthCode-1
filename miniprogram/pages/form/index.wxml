@@ -4,11 +4,13 @@
 			<view class="avatar-img">
 				<image mode="widthFix" src="{{userInfo.userInfo.avatarUrl}}"></image>
 			</view>
-			<view class="nickName"><text>{{userInfo.userInfo.nickName}}</text></view>
-		</view>
-		<view class="user-id">
-			<text>ID:</text>
-			<text class="id-content">{{userInfo.userInfo.userID}}</text>
+			<view class="nickName">
+				<view class="name">{{userInfo.userInfo.nickName}}</view>
+				<view class="user-id">
+					<text>ID:</text>
+					<text class="id-content">{{userInfo.userInfo.userID}}</text>
+				</view>
+			</view>
 		</view>
 	</view>
 	<view class="form-list">
@@ -19,7 +21,7 @@
 	</view>
 	<view class="submit-btn">
 		<button type="primary" bindtap="submitForm">提交</button>
-		<button class="cc" bindtap="OCR">上传图片1.0.3版本</button>
+		<button class="cc" bindtap="OCR">上传图片</button>
 	</view>
 </view>
 <view wx:if='{{show}}'>openid:{{openid}}</view>

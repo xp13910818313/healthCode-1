@@ -8,7 +8,7 @@
 				<view class="name">{{userInfo.userInfo.nickName}}</view>
 				<view class="user-id">
 					<text>ID:</text>
-					<text class="id-content">{{userInfo.userID}}</text>
+					<text class="id-content">{{userInfo.userInfo.userID}}</text>
 				</view>
 			</view>
 		</view>

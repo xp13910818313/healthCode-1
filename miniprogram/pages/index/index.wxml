@@ -3,13 +3,14 @@
 	<view class="title">社区健康驿站1.0.3版本</view>
 	<view class="list-box clearfix" >
 		<view wx:for="{{lable}}" class="list" bindtap="toDetail" data-id="{{item.title}}">{{item.title}}</view>
+
 	</view>
 	<view class="btn">
 		<button class="btn-box" bindtap="openConfirm">
 			我的健康码
 		</button>
 		<view class="mine" bindtap="toRecord">我的体测记录</view>
+		<view class="banben">1.0.1版本</view>
 	</view>
-	<!-- <view class="saoyisao" wx:if="{{userInfo.isAdm}}" bindtap="getScancode">管理员扫码</view> -->
 	<mp-auth show="{{dialogShow}}" bindgetUserInfo="bindgetuserinfo"></mp-auth>
 </view>

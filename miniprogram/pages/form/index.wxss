@@ -1,52 +1,65 @@
 /* pages/form/index.wxss */
-.form{
-  padding: 10px;
+.form {
+  padding: 20rpx;
 }
-.form .head{
-  /* text-align: center; */
-  padding: 10px 0;
+
+.form .head {
+  padding: 20rpx 0;
 }
-.avatar-img{
+
+.avatar-img {
   width: 90rpx;
+  height: 90rpx;
 }
-.avatar-img image{
+
+.avatar-img image {
   width: 100%;
 }
-.avatar{
+
+.avatar {
   display: flex;
 }
-.avater .nickName{
-  flex: 1;
 
+.nickName {
+  flex: 1;
+  padding: 0 20rpx;
 }
-.nickName text{
-  line-height: 90rpx;
-  padding: 0 10px;
+
+.nickName .name,
+.nickName .user-id {
+  line-height: 45rpx;
 }
-.user-id{
-  font-size: 14px;
+
+.user-id {
+  font-size: 28rpx;
   color: #6b6b6b;
 }
-.form-item{
+
+.form-item {
   display: flex;
-}
-.form-item{
   padding: 4px 0;
 }
-.form-item .form-item-title{
-  line-height: 31.39px;
+
+.form-item .form-item-title {
+  line-height: 62rpx;
 }
-.form-item .form-item-content{
+
+.form-item .form-item-content {
   flex: 1;
-  margin-left: 10px;
+  margin-left: 20rpx;
   border-bottom: 1px solid #ddd;
   padding: 4px 0;
-  font-size: 14px;
+  font-size: 28rpx;
   color: #333;
 }
-.form .submit-btn{
-  margin-top: 50px;
+
+.form .submit-btn {
+  margin-top: 60rpx;
+  width: calc(100% - 40rpx);
+  position: fixed;
+  bottom: 0;
 }
-.cc{
-  margin-top: 10px;
+
+.cc {
+  margin-top: 20rpx;
 }

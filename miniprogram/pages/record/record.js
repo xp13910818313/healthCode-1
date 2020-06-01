@@ -31,15 +31,18 @@ Page({
         name: 'healthData',
         data: {
           type: 'get',
-          openid: that.data.userInfo.openid
+          mydata:"mydata"
         }
       }).then(res => {
         console.log('记录查询==>', res.result.data)
         res.result.data.forEach(elem => {
           elem.time = `${new Date(elem.time).getFullYear()}-${new Date(elem.time).getMonth()+1>=10?new Date(elem.time).getMonth()+1:'0'+(new Date(elem.time).getMonth()+1)}-${new Date(elem.time).getDate()>=10?new Date(elem.time).getDate():'0'+new Date(elem.time).getDate()} ${new Date(elem.time).getHours()>=10?new Date(elem.time).getHours():'0'+new Date(elem.time).getHours()}:${new Date(elem.time).getMinutes()>=10?new Date(elem.time).getMinutes():'0'+new Date(elem.time).getMinutes()}:${new Date(elem.time).getSeconds()>=10?new Date(elem.time).getSeconds():'0'+new Date(elem.time).getSeconds()}`
         });
+        
+        console.log('记录查询==>', res.result.data[0].userInfo)
         that.setData({
-          dataList: res.result.data
+          dataList: res.result.data,
+          userInfo: res.result.data[0].userInfo
         })
       })
     })
