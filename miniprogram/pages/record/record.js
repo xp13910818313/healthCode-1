@@ -18,8 +18,8 @@ Page({
       this.setData({
         userInfo: getApp().globalData.userInfo
       })
-
     }
+
     wx.cloud.callFunction({
       name: 'healthData',
       data: {

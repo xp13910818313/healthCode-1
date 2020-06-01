@@ -2,7 +2,7 @@
 	<view class="head">
 		<view class="avatar">
 			<view class="avatar-img">
-				<image mode="widthFix" src="{{userInfo.userInfo.avatarUrl}}"></image>
+				<image mode="widthFix" src="{{userInfo.avatarUrl}}"></image>
 			</view>
 			<view class="nickName">
 				<view class="name">{{userInfo.userInfo.nickName}}</view>
