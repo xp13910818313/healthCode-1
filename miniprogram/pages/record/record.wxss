@@ -1,57 +1,66 @@
-.record-page{
-  padding: 10px;
+.record-page {
+  padding: 20rpx;
 }
-.head{
-  padding: 10px;
+
+.head {
+  padding: 20rpx;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 1px 3px #ddd;
-  max-height: 70px;
+  max-height: 140rpx;
 }
-.avatar-img{
+
+.avatar-img {
   width: 90rpx;
 }
-.avatar-img image{
+
+.avatar-img image {
   width: 100%;
 }
-.avatar{
+
+.avatar {
   display: flex;
 }
-.avater .nickName{
-  flex: 1;
 
+.avater .nickName {
+  flex: 1;
+  padding: 0 20rpx;
 }
-.nickName{
-  padding: 0 10px;
-}
-.nickName .name,.nickName .user-id{
+
+.nickName .name,
+.nickName .user-id {
   line-height: 45rpx;
 }
 
-.user-id{
-  font-size: 14px;
+.user-id {
+  font-size: 28rpx;
   color: #6b6b6b;
 }
-.list{
-  font-size: 14px;
-  color:#6b6b6b;
-  padding-top: calc(90rpx + 20px)
+
+.list {
+  font-size: 28rpx;
+  color: #6b6b6b;
+  padding-top: calc(90rpx + 40rpx)
 }
-.list-item{
-  padding: 10px 0;
+
+.list-item {
+  padding: 20rpx 0;
   border-bottom: 1px solid #ddd;
 }
-.list-item:last-child{
-  border-bottom:none
+
+.list-item:last-child {
+  border-bottom: none
 }
-.quota{
+
+.quota {
   display: flex;
   flex-wrap: wrap;
 }
-.quota .content{
+
+.quota .content {
   width: 50%;
   padding: 4px 0;
 }
