@@ -41,6 +41,9 @@ Page({
             _this.setData({
               userInfo: r.userInfo
             })
+            wx.navigateTo({
+              url: '/pages/QRcode/QRcode?userInfo=' + _this.data.userInfo.openid,
+            })
           },
           fail: err => {
             console.log("存储失败", err)
@@ -77,10 +80,11 @@ Page({
         _this.setData({
           userInfo: app.globalData.userInfo
         })
-        wx.hideLoading({
-          complete: (res) => {},
-        })
+        
       }
+      wx.hideLoading({
+        complete: (res) => {},
+      })
     }, 1000)
   },
 
