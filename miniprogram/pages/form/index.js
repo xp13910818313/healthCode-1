@@ -176,7 +176,9 @@ Page({
     //   title: "身体得分",
     //   unit: "分",
     //   value: ""
-    // }, ]
+    // }, {
+    // title:""
+    // }]
     // console.log("list", list)
     // this.setData({
     //   formData: list,

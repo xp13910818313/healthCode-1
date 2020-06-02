@@ -145,16 +145,18 @@ page {
   display: flex;
   position: relative;
 }
-.title{
+
+.title {
   font-size: 18px;
-  font-weight: bold;
   padding: 13px 0 8px;
 }
+
 .voiceBox .voice {
   width: 100%;
   padding: 5px;
   box-sizing: border-box;
 }
+
 .voiceBox .btn-style {
   width: 80rpx;
   height: 80rpx;
@@ -163,8 +165,9 @@ page {
   left: 50%;
   margin-left: -40rpx;
 }
+
 .voice {
   margin-top: 30rpx;
-  border:1rpx solid #ccc;
+  border: 1rpx solid #ccc;
   width: 350rpx;
 }
