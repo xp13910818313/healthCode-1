@@ -106,10 +106,6 @@ Page({
    */
   onLoad: function (options) {
     _this = this
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    })
     setTimeout(function () {
       console.log("全局信息", app.globalData.userInfo)
       if(app.globalData.userInfo){
@@ -125,9 +121,6 @@ Page({
         })
 
       }
-      wx.hideLoading({
-        complete: (res) => {},
-      })
     }, 1000)
   },
 

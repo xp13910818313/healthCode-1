@@ -5,12 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    formData: []
+    formData: [],
+    userInfo: null,
+    landmark:null
   },
 
   printer() {
     console.log('test')
     console.log(this.data.formData)
+
     //USER和UKEY在飞鹅云（ http://admin.feieyun.com/ ）管理后台的个人中心可以查看
     var USER = "1061090734@qq.com"; //必填，飞鹅云 http://admin.feieyun.com/ 管理后台注册的账号名
     var UKEY = "dYLwK6pk2N4FAP3v"; //必填，这个不是填打印机的key，是在飞鹅云后台注册账号后生成的UKEY
@@ -33,29 +36,49 @@ Page({
     //拼凑订单内容时可参考如下格式
     //根据打印纸张的宽度，自行调整内容的格式，可参考下面的样例格式
 
-    var orderInfo;
-    orderInfo = '<CB>体测报告</CB><BR>';
-    orderInfo += `时间：${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}<BR>`;
+    var orderInfo = '';
+    orderInfo += '<CB>社区健康驿站</CB><BR>';
+    orderInfo += '<CB>（上水径）</CB><BR>';
+    orderInfo += '<CB>体测记录</CB><BR>';
+    orderInfo += `地址：${this.data.landmark.address}<BR>`;
+    let phone=''
+    this.data.landmark.phone.forEach(el => {
+      phone+=el+' '
+    });
+    orderInfo += `电话：${phone}<BR>`;
+    
+    orderInfo += `时间：${new Date(this.data.time).getFullYear()}-${new Date(this.data.time).getMonth()}-${new Date(this.data.time).getDate()} ${new Date(this.data.time).getHours()}:${new Date(this.data.time).getMinutes()}:${new Date(this.data.time).getSeconds()}<BR>`;
     orderInfo += '--------------------------------<BR>';
+    orderInfo += `用户ID:${this.data.userInfo.userInfo.userID}<BR>`;
+
     this.data.formData.forEach(elem => {
+      
       if (!elem.isTow) {
-        orderInfo += `${elem.title}：${elem.value}${elem.unit?elem.unit:''}<BR>`;
-      }else{
+        
+        if (elem.title == '健康管理师建议') {
+          orderInfo += '--------------------------------<BR>';
+          orderInfo += `${elem.title}：<BR>`;
+          orderInfo += `${elem.value+elem.unit}<BR>`;
+        }else{
+          orderInfo += `${elem.title}：${elem.value+elem.unit}<BR>`;
+        }
+      } else {
         orderInfo += `${elem.title}：<BR>`;
-        elem.Tow.forEach(el=>{
-          orderInfo += ` ${el.title}：${el.value}${el.unit?el.unit:''}<BR>`;
+        elem.Tow.forEach(el => {
+          orderInfo += ` ${el.title}：${el.value+el.unit}<BR>`;
         })
       }
     });
 
     orderInfo += '--------------------------------<BR>';
+    orderInfo += '<C>和谐邻里    健康社区</C><BR>';
     orderInfo += '<QR>https://wec.antbiz.cn/qrcode?openid=o7CqC4tuyzdJoM-feijSFwmdkIEE</QR><BR>'; //把二维码字符串用标签套上即可自动生成二维码
     orderInfo += '扫描二维码查看体测记录<BR>'; //把二维码字符串用标签套上即可自动生成二维码
 
     //***接口返回值说明***
     //正确例子：{"msg":"ok","ret":0,"data":"123456789_20160823165104_1853029628","serverExecutedTime":6}
     //错误：{"msg":"错误信息.","ret":非零错误码,"data":null,"serverExecutedTime":5}
-    // console.log(orderInfo);
+    console.log(orderInfo);
     //打开注释可测试
     print_r(SN, orderInfo, 1);
 
@@ -151,6 +174,7 @@ Page({
      *  打印订单方法：Open_printMsg
      */
     function print_r(SN, orderInfo, TIMES) {
+
       wx.showLoading({
         title: '正在打印',
       })
@@ -175,6 +199,11 @@ Page({
           wx.hideLoading({
             complete: (res) => {},
           })
+        },
+        fail: err => {
+          wx.hideLoading({
+            complete: (res) => {},
+          })
         }
       })
     }
@@ -183,14 +212,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.data) {
-      console.log(JSON.parse(options.data))
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.cloud.callFunction({
+      name:'landmark',
+      data:{
+        type:'get'
+      }
+    }).then(res=>{
+      console.log(res.result.data[0])
       this.setData({
-        formData: JSON.parse(options.data).healthData
+        landmark:res.result.data[0]
       })
+      wx.hideLoading({
+        complete: (res) => {},
+      })
+    })
+    if (getApp().globalData.formData) {
+      this.setData({
+        formData: getApp().globalData.formData.healthData,
+        time:getApp().globalData.formData.time,
+        userInfo:getApp().globalData.formData.userInfo
+      })
+      console.log('formdata==>',this.data.formData)
     }
-
-
   },
 
   /**

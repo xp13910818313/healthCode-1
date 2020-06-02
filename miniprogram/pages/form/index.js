@@ -27,18 +27,23 @@ Page({
     console.log(this.data.formData)
     let data=this.data.formData
     data.push({
-      title:'健康管理师评估',
+      title:'健康管理师建议',
       value:this.data.voice,
       unit:''
     })
-    
+    console.log('data==>',data)
+   
     let formData = {
       openid: this.data.openid,
       healthData: data,
       userInfo: this.data.userInfo,
       time: new Date()
     }
-    console.log(formData)
+    console.log('formData==>',formData)
+
+    getApp().globalData.formData=formData
+
+    console.log('globalData.formData==>',getApp().globalData.formData)
     wx.cloud.callFunction({
       name: 'healthData',
       data: {
@@ -52,7 +57,7 @@ Page({
         complete: (res) => {},
       })
       wx.navigateTo({
-        url: './form?data=' + JSON.stringify(formData),
+        url: './form',
       })
 
     })
@@ -123,6 +128,7 @@ Page({
     }
     manager.onStart = function (res) {
       console.log("成功开始录音识别", res)
+      
     }
     manager.onError = function (res) {
       console.error("error msg", res.msg)
@@ -203,7 +209,6 @@ Page({
    */
   onShow: function () {
     console.log('show')
-    var that = this
     this.setData({
       formData: ""
     })
@@ -215,21 +220,30 @@ Page({
     }).then(r => {
       console.log(r.result.data[0].list)
       this.setData({
-        formData: r.result.data[0].list,
-        voice: r.result.data[0].list[r.result.data[0].list.length - 1].value
+        formData: r.result.data[0].list
       })
     })
+    var that = this
     manager.onRecognize = function (res) {
-
+      // console.log('manager.onRecognize')
+      // console.log(res)
+      // wx.showToast({
+      //   title: res.result,
+      // })
+      // cons.log("current result", res.result)
     }
     manager.onStop = function (res) {
       console.log('manager.onStop')
-      console.log('识别结果', res.result) //语音识别信息打印
+      console.log('识别结果',res.result)//语音识别信息打印
       var voice = that.data.voice
       voice = voice.concat(res.result)
       that.setData({
-        voice: voice
+        voice:voice
       })
+      // UTIL.log("record file path", res.tempFilePath)
+      // UTIL.log("result", res.result)
+      //res.result is the asr result, change the follow step to your source
+      //NLI.process(res.result, pageSelf);
     }
     manager.onError = function (res) {
       console.log('manager.onError')
@@ -260,18 +274,18 @@ Page({
       icon: 'loading',
       duration: 2000
     })
-    wx.cloud.callFunction({
-      name: "healthData",
-      data: {
-        type: "list"
-      },
-      success: r => {
-        console.log(r.result.data[0].list)
-        this.setData({
-          formData: r.result.data[0].list,
-        })
-      }
-    })
+    // wx.cloud.callFunction({
+    //   name: "healthData",
+    //   data: {
+    //     type: "list"
+    //   },
+    //   success: r => {
+    //     console.log(r.result.data[0].list)
+    //     this.setData({
+    //       formData: r.result.data[0].list,
+    //     })
+    //   }
+    // })
   },
 
   del:function() {
