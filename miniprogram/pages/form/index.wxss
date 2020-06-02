@@ -66,6 +66,7 @@ page {
 
 .form-item .form-item-content {
   flex: 1;
+  font-size: 14px;
   border-bottom: 1px solid #ddd;
   font-size: 32rpx;
   color: #333;
