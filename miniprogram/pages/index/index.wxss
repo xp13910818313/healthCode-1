@@ -1,7 +1,9 @@
 page {
   width: 100%;
   height: 100%;
-  /* background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591079191735&di=5d13bd788706b35e3ea0183351526ffb&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-12-09%2F5a2baaf25b957.jpg') no-repeat center; */
+  background: url('http://20200308323095.yunhaiweb.com/upload/document5/57257/image/20200602140229794.jpg') no-repeat  center;
+  background-size: 100% 110%;
+  background-attachment:fixed;
 }
 
 .clearfix::after {
@@ -27,14 +29,18 @@ page {
 .index {
   box-sizing: border-box;
   padding: 60rpx;
-  width: 100%;
+  width: 100%;  
   height: 100%;
   position: relative;
   /* background: #999; */
 }
 
 .bgImg {
-  margin-top: 110rpx;
+  margin: 130rpx auto ;
+  width: 100%;
+}
+.bgImg .img {
+  width: 100%;
 }
 
 .list-box {
