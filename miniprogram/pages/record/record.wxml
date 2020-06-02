@@ -15,36 +15,35 @@
 
 	</view>
 	<view class="list">
-		<view class="list-item" wx:for="{{dataList}}">
-			<view class="time">
-				<!-- <text>时间:</text> -->
-				<text>{{item.time}}</text>
-			</view>
-			<view class="quota">
-				<view class="content {{index1==item.healthData.length-1?'fullwidth':''}}" wx:for="{{item.healthData}}" wx:for-item="itemName" wx:for-index="index1">
-					<block wx:if="{{!itemName.isTow}}">
-						
-						<block wx:if="{{itemName.title=='健康管理师评估'}}">
-							<view>{{itemName.title}}:</view>
-							<view>{{itemName.value}}</view>
+		<block wx:if="{{dataList.length != 0}}">
+			<view class="list-item" wx:for="{{dataList}}">
+				<view class="time">
+					<text>时间:</text>
+					<text>{{item.time}}</text>
+				</view>
+				<view class="quota">
+					<view class="content {{itemName.title=='健康管理师建议'?'fullwidth':''}}" wx:for="{{item.healthData}}" wx:for-item="itemName">
+						<block wx:if="{{!itemName.isTow}}">
+							<block wx:if="{{itemName.title=='健康管理师建议'}}">
+								<view>{{itemName.title}}:</view>
+								<view class="full-content">{{itemName.value+itemName.unit}}</view>
+							</block>
+							<block wx:else>
+								<text>{{itemName.title}}:</text>
+								<text>{{itemName.value+itemName.unit}}</text>
+							</block>
 						</block>
 						<block wx:else>
-							<text>{{itemName.title}}:</text>
-							<text>{{itemName.value}}</text>
+							<view class="content-title">{{itemName.title}}:</view>
+							<view class="content-item" wx:for="{{itemName.Tow}}" wx:for-item="itemName1">
+								<text>{{itemName1.title}}:</text>
+								<text>{{itemName1.value + itemName1.unit}}</text>
+							</view>
 						</block>
-
-						<text wx:if="{{itemName.unit}}">{{itemName.unit}}</text>
-					</block>
-					<block wx:else>
-						<view class="content-title">{{itemName.title}}:</view>
-						<view class="content-item" wx:for="{{itemName.Tow}}" wx:for-item="itemName1">
-							<text>{{itemName1.title}}:</text>
-							<text>{{itemName1.value + itemName1.unit}}</text>
-						</view>
-					</block>
+					</view>
 				</view>
 			</view>
-
-		</view>
+		</block>
+		<view class="null" wx:else>暂无内容</view>
 	</view>
 </view>
