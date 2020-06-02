@@ -36,12 +36,5 @@ exports.main = async (event, context) => {
     case 'list': {
       return await cloud.database().collection('health_list').get()
     }
-    case 'getlist': {
-      return await cloud.database().collection('health_list').add({
-        data: {
-          list: event.list
-        }
-      })
-    }
   }
 }
