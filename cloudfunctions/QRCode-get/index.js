@@ -8,16 +8,15 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   try {
     const result = await cloud.openapi.wxacode.get({
-        path: `/pages/form/index?openid=${event.openid}`,
-        width: 460
-      })
-    console.log(result)
-    const upload = await cloud.uploadFile({
-      cloudPath: `QRCode/name.png`,
-      fileContent:result.buffer
+      path: `/pages/form/index?openid=${event.openid}`,
+      width: 460
     })
-    return upload
-  } catch(err) {
+
+    return await cloud.uploadFile({
+      cloudPath: `QRCode/${wxContext.OPENID}/name.png`,
+      fileContent: result.buffer
+    })
+  } catch (err) {
     console.log(err)
     return err
   }

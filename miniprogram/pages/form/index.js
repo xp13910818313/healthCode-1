@@ -39,12 +39,11 @@ Page({
       }
     }).then(res => {
       console.log('添加成功', res)
-      let formData = this.data.formData
-      formData.forEach(elem => {
-        elem.value = ''
-      });
       this.setData({
         formData: formData
+      })
+      wx.navigateTo({
+        url: './form?data=' + JSON.stringify(formData),
       })
       wx.hideLoading({
         complete: (res) => {},
@@ -56,17 +55,18 @@ Page({
   },
   //表单输入监听
   formChange(e) {
-    console.log(e.currentTarget.dataset.name)
-    console.log(e.detail.value)
-    console.log(e.currentTarget.dataset.index)
+    let formData = this.data.formData
     if (!e.currentTarget.dataset.istow) {
-      let formData = this.data.formData
       formData[e.currentTarget.dataset.index].value = e.detail.value
       this.setData({
         formData: formData
       })
     } else {
-      // for( this.data.formData){}
+
+      formData[e.currentTarget.dataset.index].Tow[e.currentTarget.dataset.key].value = e.detail.value
+      this.setData({
+        formData: formData
+      })
     }
     console.log(this.data.formData)
   },
@@ -75,18 +75,63 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    wx.cloud.callFunction({
-      name: "healthData",
-      data: {
-        type: "list"
-      },
-      success: r => {
-        console.log(r.result.data[0].list)
-        that.setData({
-          formData: r.result.data[0].list
-        })
-      }
-    })
+    let listData = [{
+      isTow: false,
+      title: "体温",
+      unit: "°C",
+      value: ""
+    }, {
+      isTow: false,
+      title: "体重",
+      unit: "KG",
+      value: ""
+    }, {
+      isTow: false,
+      title: "身高",
+      unit: "CM",
+      value: ""
+    }, {
+      isTow: false,
+      title: "尿酸",
+      unit: "mg/dl",
+      value: ""
+    }, {
+      isTow: false,
+      title: "血粆",
+      unit: "mol/L",
+      value: ""
+    }, {
+      isTow: false,
+      title: "心率",
+      unit: "次/min",
+      value: ""
+    }, {
+      Tow: [{
+        title: "收缩压",
+        unit: "mmHg",
+        value: ""
+      }, {
+        title: "舒张压",
+        unit: "mmHg",
+        value: ""
+      }],
+      isTow: true,
+      title: "血压"
+    }, {
+      Tow: [{
+          title: "左眼",
+          unit: "",
+          value: ""
+        },
+        {
+          title: "右眼",
+          unit: "",
+          value: ""
+        },
+      ],
+      isTow: true,
+      title: "视力"
+    }]
     wx.cloud.callFunction({
       name: 'isShow'
     }).then(res => {
@@ -251,6 +296,18 @@ Page({
       title: '正在识别……',
       icon: 'loading',
       duration: 2000
+    })
+    wx.cloud.callFunction({
+      name: "healthData",
+      data: {
+        type: "list"
+      },
+      success: r => {
+        console.log(r.result.data[0].list)
+        this.setData({
+          formData: r.result.data[0].list,
+        })
+      }
     })
   },
 

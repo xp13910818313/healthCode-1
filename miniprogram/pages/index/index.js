@@ -30,8 +30,10 @@ Page({
 
   openConfirm: function (e) {
     if (_this.data.userInfo == null) {
+
       this.setData({
-        dialogShow: true
+        dialogShow: true,
+        clickType: e.currentTarget.dataset.btn
       })
     } else {
       console.log("生产二维码", _this.data.userInfo.openid)
@@ -64,9 +66,19 @@ Page({
             _this.setData({
               userInfo: r.userInfo
             })
-            wx.navigateTo({
-              url: '/pages/QRcode/QRcode?userInfo=' + _this.data.userInfo.openid,
-            })
+            switch (this.data.clickType) {
+              case 'code': {
+                wx.navigateTo({
+                  url: '/pages/QRcode/QRcode?userInfo=' + _this.data.userInfo.openid,
+                })
+                break
+              }
+              case 'record': {
+                wx.navigateTo({
+                  url: '/pages/record/record',
+                })
+              }
+            }
           },
           fail: err => {
             console.log("存储失败", err)
@@ -76,12 +88,13 @@ Page({
     })
 
   },
-  toRecord(){
-    if(!getApp().globalData.userInfo){
+  toRecord(e) {
+    if (!getApp().globalData.userInfo) {
       this.setData({
-        dialogShow: true
+        dialogShow: true,
+        clickType: e.currentTarget.dataset.btn
       })
-    }else{
+    } else {
       wx.navigateTo({
         url: '/pages/record/record',
       })
@@ -107,7 +120,7 @@ Page({
         _this.setData({
           userInfo: app.globalData.userInfo
         })
-        
+
       }
       wx.hideLoading({
         complete: (res) => {},

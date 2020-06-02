@@ -2,14 +2,14 @@
 <view class="index">
 	<view class="title">社区健康驿站1.0.3版本</view>
 	<view class="list-box clearfix" >
-		<view wx:for="{{lable}}" class="list" bindtap="toDetail" data-id="{{item.title}}">{{item.title}}</view>
+		<view wx:for="{{lable}}" wx:key="i" class="list" data-id="{{item.title}}">{{item.title}}</view>
 
 	</view>
 	<view class="btn">
-		<button class="btn-box" bindtap="openConfirm">
+		<button class="btn-box" bindtap="openConfirm" data-btn="code">
 			我的健康码
 		</button>
-		<view class="mine" bindtap="toRecord">我的体测记录</view>
+		<view class="mine" bindtap="toRecord" data-btn="record">我的体测记录</view>
 		<view class="banben">1.0.1版本</view>
 	</view>
 	<mp-auth show="{{dialogShow}}" bindgetUserInfo="bindgetuserinfo"></mp-auth>

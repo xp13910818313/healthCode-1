@@ -22,8 +22,17 @@
 			</view>
 			<view class="quota">
 				<view class="content" wx:for="{{item.healthData}}" wx:for-item="itemName">
-					<text>{{itemName.title}}:</text>
-					<text>{{itemName.value}}</text>
+					<block wx:if="{{!itemName.isTow}}">
+						<text>{{itemName.title}}:</text>
+						<text>{{itemName.value+itemName.unit}}</text>
+					</block>
+					<block wx:else>
+						<view class="content-title">{{itemName.title}}:</view>
+						<view class="content-item" wx:for="{{itemName.Tow}}" wx:for-item="itemName1">
+							<text>{{itemName1.title}}:</text>
+							<text>{{itemName1.value + itemName1.unit}}</text>
+						</view>
+					</block>
 				</view>
 			</view>
 
