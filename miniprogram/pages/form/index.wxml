@@ -33,6 +33,16 @@
 		</view>
 		<view wx:if='{{show}}'>openid：{{openid}}</view>
 	</view>
+	<!-- 语音识别 -->
+	<view class="voiceBox">
+		<textarea value="{{voice}}" maxlength="-1" class="voice"></textarea>
+		<view>
+			<!-- <button type="primary" class="btn-style"  bindtouchstart="touchdown_plugin" bindtouchend="touchup_plugin">录音</button> -->
+			<image  bindtouchstart="touchdown_plugin" bindtouchend="touchup_plugin" class="btn-style" src="../../image/mai.png"></image>
+		</view>
+	</view>
+
+
 	<view class="submit-btn">
 		<button type="primary" bindtap="submitForm">提交</button>
 		<button wx:if='{{show}}' class="cc" bindtap="OCR">上传图片</button>

@@ -1,4 +1,9 @@
 // pages/form/index.js
+
+var pageSelf = undefined;
+var plugin = requirePlugin("WechatSI")
+let manager = plugin.getRecordRecognitionManager()
+
 Page({
 
   /**
@@ -10,7 +15,8 @@ Page({
     url: '',
     ID: '',
     openid: null,
-    formData: null
+    formData: null,
+    voice:''
   },
   // 表单提交
   submitForm() {
@@ -55,6 +61,7 @@ Page({
         formData: formData
       })
     } else {
+
       formData[e.currentTarget.dataset.index].Tow[e.currentTarget.dataset.key].value = e.detail.value
       this.setData({
         formData: formData
@@ -154,6 +161,30 @@ Page({
     })
   },
 
+  // 语音转文字（触发开始）
+  streamRecord: function (e) {
+    var plugin = requirePlugin("WechatSI")
+    let manager = plugin.getRecordRecognitionManager()
+    manager.onRecognize = function (res) {
+      console.log("current result", res.result)
+    }
+    manager.onStop = function (res) {
+      console.log("record file path", res.tempFilePath)
+      console.log("result", res.result)
+    }
+    manager.onStart = function (res) {
+      console.log("成功开始录音识别", res)
+    }
+    manager.onError = function (res) {
+      console.error("error msg", res.msg)
+    }
+    manager.start({
+      duration: 30000,
+      lang: "zh_CN"
+    })
+  },
+
+
   // OCR文本识别
   OCR: function () {
     var that = this
@@ -222,6 +253,49 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this
+    manager.onRecognize = function (res) {
+      // console.log('manager.onRecognize')
+      // console.log(res)
+      // wx.showToast({
+      //   title: res.result,
+      // })
+      // cons.log("current result", res.result)
+    }
+    manager.onStop = function (res) {
+      console.log('manager.onStop')
+      console.log('识别结果',res.result)//语音识别信息打印
+      that.setData({
+        voice:res.result
+      })
+      // UTIL.log("record file path", res.tempFilePath)
+      // UTIL.log("result", res.result)
+      //res.result is the asr result, change the follow step to your source
+      //NLI.process(res.result, pageSelf);
+    }
+    manager.onError = function (res) {
+      console.log('manager.onError')
+      console.log(res)//报错信息打印
+      // UTIL.log("error msg", res.msg)
+    }
+  },
+  //添加两个方法
+    touchdown_plugin: function() {
+    var _this = this
+    // UTIL.stopTTS();
+    manager.start({
+      duration: 30000,
+      lang: "zh_CN"
+    })
+  },
+  //手指松开
+  touchup_plugin: function() {
+    manager.stop();
+    wx.showToast({
+      title: '正在识别……',
+      icon: 'loading',
+      duration: 2000
+    })
     wx.cloud.callFunction({
       name: "healthData",
       data: {
