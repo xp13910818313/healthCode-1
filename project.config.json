@@ -54,7 +54,7 @@
 					"id": 0,
 					"name": "pages/form/index",
 					"pathName": "pages/form/index",
-					"query": "openid=o7CqC4tMsBWS_id90ZYd6ltpHQcw",
+					"query": "openid=o7CqC4tuyzdJoM-feijSFwmdkIEE",
 					"scene": 1011
 				},
 				{
@@ -83,6 +83,13 @@
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "openid=osXMd5IDKmmbNs3d8e",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/form/form",
+					"pathName": "pages/form/form",
+					"query": "",
 					"scene": null
 				}
 			]
