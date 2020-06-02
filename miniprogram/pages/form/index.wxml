@@ -38,14 +38,15 @@
 		<view wx:if='{{show}}'>openid：{{openid}}</view>
 	</view>
 	<!-- 语音识别 -->
-	<view class="title">健康管理师评估：</view>
-	<view class="voiceBox">
-		<textarea value="{{voice}}" maxlength="-1" class="voice"></textarea>
-		<view>
-			<image  bindtouchstart="touchdown_plugin" bindtouchend="touchup_plugin" class="btn-style" src="../../image/mai.png"></image>
+	<view class="voice-box">
+		<view class="title">健康管理师评估：</view>
+		<view class="voiceBox">
+			<textarea value="{{voice}}" maxlength="-1" class="voice"></textarea>
+			<view>
+				<image bindtouchstart="touchdown_plugin" bindtouchend="touchup_plugin" class="btn-style" src="../../image/mai.png"></image>
+			</view>
 		</view>
 	</view>
-
 
 	<view class="submit-btn">
 		<button type="primary" bindtap="submitForm">提交</button>
