@@ -33,5 +33,8 @@ exports.main = async (event, context) => {
         openid:wxContext.OPENID
       }).count()
     }
+    case 'list' :{
+      return await cloud.database().collection('health_list').get()
+    }
   }
 }

@@ -10,29 +10,7 @@ Page({
     url: '',
     ID: '',
     openid: null,
-    formData: [{
-      title: '血压',
-      value: ''
-    }, {
-      title: '视力',
-      value: ''
-    }, {
-      title: '体脂',
-      value: ''
-    }, {
-      title: '身高',
-      value: ''
-    }, {
-      title: '体重',
-      value: ''
-    }, {
-      title: '血糖',
-      value: ''
-    }, {
-      title: '尿酸',
-      value: ''
-    }]
-
+    formData: null
   },
   // 表单提交
   submitForm() {
@@ -72,19 +50,37 @@ Page({
   },
   //表单输入监听
   formChange(e) {
-    let formData = this.data.formData
-    formData[e.currentTarget.dataset.index].value = e.detail.value
-    this.setData({
-      formData: formData
-    })
+    console.log(e.currentTarget.dataset.name)
+    console.log(e.detail.value)
+    console.log(e.currentTarget.dataset.index)
+    if (!e.currentTarget.dataset.istow) {
+      let formData = this.data.formData
+      formData[e.currentTarget.dataset.index].value = e.detail.value
+      this.setData({
+        formData: formData
+      })
+    }else{
+      // for( this.data.formData){}
+    }
     console.log(this.data.formData)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     let that = this
+    wx.cloud.callFunction({
+      name: "healthData",
+      data: {
+        type: "list"
+      },
+      success: r => {
+        console.log(r.result.data[0].list)
+        that.setData({
+          formData: r.result.data[0].list
+        })
+      }
+    })
     wx.cloud.callFunction({
       name: 'isShow'
     }).then(res => {
@@ -94,7 +90,6 @@ Page({
       })
     })
     let openid = decodeURIComponent(options.openid)
-    console.log(openid)
 
     this.setData({
       openid: openid
