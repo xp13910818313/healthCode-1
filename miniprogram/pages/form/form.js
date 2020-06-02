@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    formData: []
   },
 
   printer() {
@@ -31,24 +31,28 @@ Page({
     //<W></W>字体变宽一倍,"<QR></QR>"为二维码,"<BOLD></BOLD>"为字体加粗,"<RIGHT></RIGHT>"为右对齐
     //拼凑订单内容时可参考如下格式
     //根据打印纸张的宽度，自行调整内容的格式，可参考下面的样例格式
-
     var orderInfo;
     orderInfo = '<CB>体测报告</CB><BR>';
     orderInfo += '--------------------------------<BR>';
-    orderInfo += '体温：36℃<BR>';
-    orderInfo += '体重：56KG<BR>';
-    orderInfo += '身高：180CM<BR>';
-    orderInfo += '尿酸：45mg/dL<BR>';
-    orderInfo += '血粆：5mol/L<BR>';
-    orderInfo += '血压：<BR>';
-    orderInfo += '  收缩压：34mmHg<BR>';
-    orderInfo += '  舒张压：34mmHg<BR>';
-    orderInfo += '视力：<BR>';
-    orderInfo += '  左眼：5.3<BR>';
-    orderInfo += '  右眼：5.2<BR>';
+    this.data.formData.forEach(elem => {
+      if (!elem.isTow) {
+        orderInfo += `${elem.title}:${elem.value+ elem.unit}<BR>`;
+      }
+    });
+    // orderInfo += '体温：36℃<BR>';
+    // orderInfo += '体重：56KG<BR>';
+    // orderInfo += '身高：180CM<BR>';
+    // orderInfo += '尿酸：45mg/dL<BR>';
+    // orderInfo += '血粆：5mol/L<BR>';
+    // orderInfo += '血压：<BR>';
+    // orderInfo += '  收缩压：34mmHg<BR>';
+    // orderInfo += '  舒张压：34mmHg<BR>';
+    // orderInfo += '视力：<BR>';
+    // orderInfo += '  左眼：5.3<BR>';
+    // orderInfo += '  右眼：5.2<BR>';
     orderInfo += '--------------------------------<BR>';
     orderInfo += '专家建议：多喝热水！！！<BR>';
-    orderInfo += '订餐时间：'+new Date()+'<BR>';
+    orderInfo += '时间：' + new Date() + '<BR>';
     orderInfo += '<QR>http://www.dzist.com</QR>'; //把二维码字符串用标签套上即可自动生成二维码
 
     //***接口返回值说明***
@@ -176,6 +180,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.data) {
+      this.setData({
+        formData: JSON.parse(options.data)
+      })
+    }
 
   },
 
