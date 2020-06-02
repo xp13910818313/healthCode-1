@@ -16,7 +16,8 @@ Page({
     ID: '',
     openid: null,
     formData: null,
-    voice: ''
+    voice: '',
+    del:false
   },
   // 表单提交
   submitForm() {
@@ -394,6 +395,29 @@ Page({
     })
   },
 
+  del:function() {
+    this.setData({
+      voice:'',
+      del:false
+    })
+
+  },
+  text(e){
+    console.log(this.data.voice)
+    console.log(e.detail.value)
+    this.setData({
+      voice:e.detail.value
+    })
+    if(this.data.voice=='') {
+      this.setData({
+        del:!false
+      })
+    } else {
+      this.setData({
+        del:true
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

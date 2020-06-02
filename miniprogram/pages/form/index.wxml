@@ -50,7 +50,6 @@
 		<view wx:if='{{show}}'>openid：{{openid}}</view>
 	</view>
 
-
 	<view class="submit-btn">
 		<button type="primary" bindtap="submitForm">提交</button>
 		<button wx:if='{{show}}' class="cc" bindtap="OCR">上传图片</button>
