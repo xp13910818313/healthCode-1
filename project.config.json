@@ -84,6 +84,12 @@
 					"pathName": "pages/index/index",
 					"query": "openid=osXMd5IDKmmbNs3d8e",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/form/form",
+					"pathName": "pages/form/form",
+					"scene": null
 				}
 			]
 		}
