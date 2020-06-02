@@ -48,7 +48,7 @@ Page({
     orderInfo += '  右眼：5.2<BR>';
     orderInfo += '--------------------------------<BR>';
     orderInfo += '专家建议：多喝热水！！！<BR>';
-    orderInfo += '订餐时间：'+new Date()+'<BR>';
+    orderInfo += '订餐时间：' + new Date() + '<BR>';
     orderInfo += '<QR>http://www.dzist.com</QR>'; //把二维码字符串用标签套上即可自动生成二维码
 
     //***接口返回值说明***
@@ -176,7 +176,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(JSON.parse(options.data))
   },
 
   /**
