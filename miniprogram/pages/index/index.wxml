@@ -6,10 +6,10 @@
 
 	</view>
 	<view class="btn">
-		<button class="btn-box" bindtap="openConfirm">
+		<button class="btn-box" bindtap="openConfirm" data-btn="code">
 			我的健康码
 		</button>
-		<view class="mine" bindtap="toRecord">我的体测记录</view>
+		<view class="mine" bindtap="toRecord" data-btn="record">我的体测记录</view>
 		<view class="banben">1.0.1版本</view>
 	</view>
 	<mp-auth show="{{dialogShow}}" bindgetUserInfo="bindgetuserinfo"></mp-auth>

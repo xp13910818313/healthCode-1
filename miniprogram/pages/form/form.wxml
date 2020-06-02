@@ -1,0 +1,4 @@
+<!--pages/form/form.wxml-->
+<view class="form-etail">
+<button type="primary" bindtap="printer">打印</button>
+</view>

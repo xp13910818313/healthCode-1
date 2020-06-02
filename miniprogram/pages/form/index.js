@@ -10,7 +10,29 @@ Page({
     url: '',
     ID: '',
     openid: null,
-    formData: null
+    formData: [{
+      title: '血压',
+      value: ''
+    }, {
+      title: '视力',
+      value: ''
+    }, {
+      title: '体脂',
+      value: ''
+    }, {
+      title: '身高',
+      value: ''
+    }, {
+      title: '体重',
+      value: ''
+    }, {
+      title: '血糖',
+      value: ''
+    }, {
+      title: '尿酸',
+      value: ''
+    }]
+
   },
   // 表单提交
   submitForm() {
@@ -33,6 +55,10 @@ Page({
       }
     }).then(res => {
       console.log('添加成功', res)
+      let formData = this.data.formData
+      formData.forEach(elem => {
+        elem.value = ''
+      });
       this.setData({
         formData: formData
       })
@@ -42,33 +68,24 @@ Page({
       wx.hideLoading({
         complete: (res) => {},
       })
-      wx.showToast({
-        title: '提交成功',
-      })
+      
     })
   },
   //表单输入监听
   formChange(e) {
     let formData = this.data.formData
-    if (!e.currentTarget.dataset.istow) {
-      formData[e.currentTarget.dataset.index].value = e.detail.value
-      this.setData({
-        formData: formData
-      })
-    } else {
-      formData[e.currentTarget.dataset.index].Tow[e.currentTarget.dataset.key].value = e.detail.value
-      this.setData({
-        formData: formData
-      })
-    }
+    formData[e.currentTarget.dataset.index].value = e.detail.value
+    this.setData({
+      formData: formData
+    })
     console.log(this.data.formData)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     let that = this
-
     wx.cloud.callFunction({
       name: 'isShow'
     }).then(res => {
@@ -78,6 +95,7 @@ Page({
       })
     })
     let openid = decodeURIComponent(options.openid)
+    console.log(openid)
 
     this.setData({
       openid: openid

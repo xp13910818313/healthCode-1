@@ -4,6 +4,7 @@
     "pages/detail/detail",
     "pages/OCR/OCR",
     "pages/form/index",
+    "pages/form/form",
     "pages/QRcode/QRcode",
     "pages/record/record"
   ],
