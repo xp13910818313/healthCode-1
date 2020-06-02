@@ -21,10 +21,19 @@
 				<text>{{item.time}}</text>
 			</view>
 			<view class="quota">
-				<view class="content" wx:for="{{item.healthData}}" wx:for-item="itemName">
+				<view class="content {{index1==item.healthData.length-1?'fullwidth':''}}" wx:for="{{item.healthData}}" wx:for-item="itemName" wx:for-index="index1">
 					<block wx:if="{{!itemName.isTow}}">
-						<text>{{itemName.title}}:</text>
-						<text>{{itemName.value+itemName.unit}}</text>
+						
+						<block wx:if="{{itemName.title=='健康管理师评估'}}">
+							<view>{{itemName.title}}:</view>
+							<view>{{itemName.value}}</view>
+						</block>
+						<block wx:else>
+							<text>{{itemName.title}}:</text>
+							<text>{{itemName.value}}</text>
+						</block>
+
+						<text wx:if="{{itemName.unit}}">{{itemName.unit}}</text>
 					</block>
 					<block wx:else>
 						<view class="content-title">{{itemName.title}}:</view>

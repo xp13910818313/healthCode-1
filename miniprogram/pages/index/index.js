@@ -112,9 +112,12 @@ Page({
     })
     setTimeout(function () {
       console.log("全局信息", app.globalData.userInfo)
-      _this.setData({
-        openid:app.globalData.userInfo.openid
-      })
+      if(app.globalData.userInfo){
+        _this.setData({
+          openid:app.globalData.userInfo.openid
+        })
+      }
+      
       console.log(_this.data.openid)
       if (app.globalData.userInfo) {
         _this.setData({

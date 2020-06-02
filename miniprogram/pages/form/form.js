@@ -10,6 +10,7 @@ Page({
 
   printer() {
     console.log('test')
+    console.log(this.data.formData)
     //USER和UKEY在飞鹅云（ http://admin.feieyun.com/ ）管理后台的个人中心可以查看
     var USER = "1061090734@qq.com"; //必填，飞鹅云 http://admin.feieyun.com/ 管理后台注册的账号名
     var UKEY = "dYLwK6pk2N4FAP3v"; //必填，这个不是填打印机的key，是在飞鹅云后台注册账号后生成的UKEY
@@ -48,9 +49,8 @@ Page({
     });
 
     orderInfo += '--------------------------------<BR>';
-    orderInfo += '专家建议：多喝热水！！！<BR>';
     orderInfo += `时间：${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}<BR>`;
-    orderInfo += '<QR>/pages/index/index</QR>'; //把二维码字符串用标签套上即可自动生成二维码
+    orderInfo += '<QR>https://wec.antbiz.cn/qrcode?openid=o7CqC4tuyzdJoM-feijSFwmdkIEE</QR>'; //把二维码字符串用标签套上即可自动生成二维码
 
     //***接口返回值说明***
     //正确例子：{"msg":"ok","ret":0,"data":"123456789_20160823165104_1853029628","serverExecutedTime":6}

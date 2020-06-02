@@ -76,7 +76,10 @@ border-radius: 6px;
 .quota .content {
   width: 50%;
   padding: 4px 0;
-  line-height: 68px;
+}
+.quota .content.fullwidth{
+  width: 100%;
+  word-wrap: break-word;
 }
 .content-title{
   line-height: calc(68px / 3);

@@ -24,9 +24,15 @@ Page({
       title: '正在提交',
     })
     console.log(this.data.formData)
+    let data=this.data.formData
+    data.push({
+      title:'健康管理师评估',
+      value:this.data.voice
+    })
+    
     let formData = {
       openid: this.data.openid,
-      healthData: this.data.formData,
+      healthData: data,
       userInfo: this.data.userInfo,
       time: new Date()
     }
@@ -39,9 +45,6 @@ Page({
       }
     }).then(res => {
       console.log('添加成功', res)
-      this.setData({
-        formData: formData
-      })
 
       wx.hideLoading({
         complete: (res) => {},
@@ -69,127 +72,18 @@ Page({
     }
     console.log(this.data.formData)
   },
+  textAreaChange(e){
+    console.log(e)
+
+    this.setData({
+      voice:e.detail.value.trim()
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let that = this
-    // let list = [{
-    //   Tow: [{
-    //       title: "左眼",
-    //       unit: "",
-    //       value: ""
-    //     },
-    //     {
-    //       title: "右眼",
-    //       unit: "",
-    //       value: ""
-    //     },
-    //   ],
-    //   isTow: true,
-    //   title: "视力"
-    // }, {
-    //   Tow: [{
-    //     title: "收缩压",
-    //     unit: "mmHg",
-    //     value: ""
-    //   }, {
-    //     title: "舒张压",
-    //     unit: "mmHg",
-    //     value: ""
-    //   }],
-    //   isTow: true,
-    //   title: "血压"
-    // }, {
-    //   isTow: false,
-    //   title: "体温",
-    //   unit: "°C",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "体重",
-    //   unit: "KG",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "身高",
-    //   unit: "CM",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "骨髓肌量",
-    //   unit: "公斤",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "水分量",
-    //   unit: "%",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "蛋白质",
-    //   unit: "%",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "骨盐量",
-    //   unit: "公斤",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "脂肪量",
-    //   unit: "%",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "身体类型",
-    //   unit: "",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "身体形态",
-    //   unit: "",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "身体年龄",
-    //   unit: "岁",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "基础代谢率",
-    //   unit: "千焦",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "去脂体重",
-    //   unit: "公斤",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "心率",
-    //   unit: "次/min",
-    //   value: ""
-    // }, {
-    //   isTow: false,
-    //   title: "身体得分",
-    //   unit: "分",
-    //   value: ""
-    // }, {
-    // title:""
-    // }]
-    // console.log("list", list)
-    // this.setData({
-    //   formData: list,
-    // })
-    // wx.cloud.callFunction({
-    //   name: "healthData",
-    //   data: {
-    //     type: "getlist",
-    //     list: list
-
-    //   }
-    // })
     wx.cloud.callFunction({
       name: 'isShow'
     }).then(res => {
@@ -314,6 +208,21 @@ Page({
   onShow: function () {
     console.log('show')
     var that = this
+    this.setData({
+      formData: ""
+    })
+    wx.cloud.callFunction({
+      name: "healthData",
+      data: {
+        type: "list"
+      }
+    }).then(r => {
+      console.log(r.result.data[0].list)
+      this.setData({
+        formData: r.result.data[0].list,
+        voice: r.result.data[0].list[r.result.data[0].list.length - 1].value
+      })
+    })
     manager.onRecognize = function (res) {
 
     }

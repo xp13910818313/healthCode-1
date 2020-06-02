@@ -18,7 +18,7 @@
 			<view class="form-item" wx:if="{{!item.isTow}}" wx:for-index="index">
 				<view class="form-box-box clearfix">
 					<view class="form-item-title fl">{{item.title}}</view>
-					<input type="number" class="fl form-item-content" data-isTow="{{item.isTow}}" data-index="{{index}}" data-name="{{item.title}}" bindinput="formChange" placeholder-class="cccc" placeholder="请输入{{item.title}}"></input>
+					<input type="{{item.title=='身体类型'?'':item.title=='身体形态'?'':'number'}}" class="fl form-item-content" data-isTow="{{item.isTow}}" data-index="{{index}}" data-name="{{item.title}}" bindinput="formChange" placeholder-class="cccc" placeholder="请输入{{item.title}}"></input>
 					<view class="unit fl">{{item.unit}}</view>
 				</view>
 			</view>
@@ -27,7 +27,7 @@
 				<view class="form-box">
 					<view class="form-box-box clearfix" wx:for="{{item.Tow}}" wx:for-index="key" wx:for-item="itemName" wx:key="k">
 						<view class="form-t fl">{{itemName.title}}</view>
-						<input type="number fl" class="form-input form-item-content" data-index="{{index}}" data-key="{{key}}" data-isTow="{{item.isTow}}" data-name="{{itemName.title}}" bindinput="formChange" placeholder="输入{{itemName.title}}"></input>
+						<input type="number" class="form-input form-item-content" data-index="{{index}}" data-key="{{key}}" data-isTow="{{item.isTow}}" data-name="{{itemName.title}}" bindinput="formChange" placeholder="输入{{itemName.title}}"></input>
 						<view class="unit fl">{{itemName.unit}}</view>
 					</view>
 				</view>
@@ -41,7 +41,7 @@
 	<view class="voice-box">
 		<view class="title">健康管理师评估：</view>
 		<view class="voiceBox">
-			<textarea value="{{voice}}" maxlength="-1" class="voice"></textarea>
+			<textarea value="{{voice}}"  bindinput="textAreaChange" maxlength="-1" class="voice"></textarea>
 			<view>
 				<image bindtouchstart="touchdown_plugin" bindtouchend="touchup_plugin" class="btn-style" src="../../image/mai.png"></image>
 			</view>
