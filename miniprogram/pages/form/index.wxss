@@ -43,7 +43,7 @@ page {
 }
 
 .form-list {
-  height: calc(100% - 130rpx - 214rpx);
+  /* height: calc(100% - 130rpx - 214rpx); */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -55,28 +55,25 @@ page {
   padding: 8rpx 0;
 }
 
+.fl {
+  float: left;
+}
+
 .form-item .form-item-title {
   line-height: 62rpx;
-  width: 70rpx;
-  position: absolute;
+  padding-right: 10px;
 }
 
 .form-item .form-item-content {
   flex: 1;
-  margin-left: 85rpx;
   border-bottom: 1px solid #ddd;
-  padding: 4px 0;
   font-size: 32rpx;
   color: #333;
-  position: absolute;
-  width: calc(100% - 190rpx);
 }
 
 .form .submit-btn {
-  /* width: calc(100% - 40rpx); */
   width: 100%;
-  /* position: fixed; */
-  bottom: 20rpx;
+  margin-bottom: 20rpx;
   height: 200rpx;
   display: flex;
   margin-top: 120rpx;
@@ -99,7 +96,7 @@ page {
 
 .form-box-box {
   flex: 1;
-  position: relative;
+  display: flex;
   line-height: 64rpx;
 }
 
@@ -136,11 +133,7 @@ page {
 }
 
 .unit {
-  position: absolute;
-  right: 20rpx;
-  top: 0;
   font-size: 24rpx;
-  width: 70rpx;
   text-align: center;
 }
 
@@ -152,8 +145,15 @@ page {
   display: flex;
   position: relative;
 }
+.title{
+  font-size: 18px;
+  font-weight: bold;
+  padding: 13px 0 8px;
+}
 .voiceBox .voice {
   width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
 }
 .voiceBox .btn-style {
   width: 80rpx;
