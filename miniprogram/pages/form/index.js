@@ -55,10 +55,6 @@ Page({
       }
     }).then(res => {
       console.log('添加成功', res)
-      let formData = this.data.formData
-      formData.forEach(elem => {
-        elem.value = ''
-      });
       this.setData({
         formData: formData
       })
@@ -68,7 +64,7 @@ Page({
       wx.hideLoading({
         complete: (res) => {},
       })
-      
+
     })
   },
   //表单输入监听
@@ -84,7 +80,64 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    let listData = [{
+      isTow: false,
+      title: "体温",
+      unit: "°C",
+      value: ""
+    }, {
+      isTow: false,
+      title: "体重",
+      unit: "KG",
+      value: ""
+    }, {
+      isTow: false,
+      title: "身高",
+      unit: "CM",
+      value: ""
+    }, {
+      isTow: false,
+      title: "尿酸",
+      unit: "mg/dl",
+      value: ""
+    }, {
+      isTow: false,
+      title: "血粆",
+      unit: "mol/L",
+      value: ""
+    }, {
+      isTow: false,
+      title: "心率",
+      unit: "次/min",
+      value: ""
+    }, {
+      Tow: [{
+        title: "收缩压",
+        unit: "mmHg",
+        value: ""
+      }, {
+        title: "舒张压",
+        unit: "mmHg",
+        value: ""
+      }],
+      isTow: true,
+      title: "血压"
+    }, {
+      Tow: [{
+          title: "左眼",
+          unit: "",
+          value: ""
+        },
+        {
+          title: "右眼",
+          unit: "",
+          value: ""
+        },
+      ],
+      isTow: true,
+      title: "视力"
+    }]
+    console.log("listData",listData)
     let that = this
     wx.cloud.callFunction({
       name: 'isShow'
