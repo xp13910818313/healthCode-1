@@ -14,23 +14,27 @@
 		</view>
 	</view>
 	<view class="form-list">
-		<view class="form-item" wx:for="{{formData}}" wx:key="item" wx:if="{{!item.isTow}}" wx:for-index="index">
-			<view class="form-box-box">
-				<view class="form-item-title">{{item.title}}</view>
-				<input type="number" class="form-item-content" data-isTow="{{item.isTow}}" data-index="{{index}}" data-name="{{item.title}}" bindinput="formChange" placeholder-class="cccc" placeholder="请输入{{item.title}}"></input>
-				<view class="unit">{{item.unit}}</view>
+		<view wx:for="{{formData}}" wx:key="item">
+			<view class="form-item" wx:if="{{!item.isTow}}" wx:for-index="index">
+				<view class="form-box-box clearfix">
+					<view class="form-item-title fl">{{item.title}}</view>
+					<input type="number" class="fl form-item-content" data-isTow="{{item.isTow}}" data-index="{{index}}" data-name="{{item.title}}" bindinput="formChange" placeholder-class="cccc" placeholder="请输入{{item.title}}"></input>
+					<view class="unit fl">{{item.unit}}</view>
+				</view>
 			</view>
-		</view>
-		<view class="T" wx:for="{{formData}}" wx:if="{{item.isTow}}" wx:key="index" wx:for-index="index">
-			<view class="form-T">{{item.title}}：</view>
-			<view class="form-box">
-				<view class="form-box-box" wx:for="{{item.Tow}}" wx:for-index="key" wx:for-item="itemName" wx:key="k">
-					<view class="form-t">{{itemName.title}}</view>
-					<input type="number" class="form-input form-item-content" data-index="{{index}}" data-key="{{key}}" data-isTow="{{item.isTow}}" data-name="{{itemName.title}}" bindinput="formChange" placeholder="输入{{itemName.title}}"></input>
-					<view class="unit">{{itemName.unit}}</view>
+			<view class="T" wx:else>
+				<view class="form-T">{{item.title}}：</view>
+				<view class="form-box">
+					<view class="form-box-box clearfix" wx:for="{{item.Tow}}" wx:for-index="key" wx:for-item="itemName" wx:key="k">
+						<view class="form-t fl">{{itemName.title}}</view>
+						<input type="number fl" class="form-input form-item-content" data-index="{{index}}" data-key="{{key}}" data-isTow="{{item.isTow}}" data-name="{{itemName.title}}" bindinput="formChange" placeholder="输入{{itemName.title}}"></input>
+						<view class="unit fl">{{itemName.unit}}</view>
+					</view>
 				</view>
 			</view>
 		</view>
+
+
 		<view wx:if='{{show}}'>openid：{{openid}}</view>
 	</view>
 	<view class="submit-btn">

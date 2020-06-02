@@ -61,70 +61,119 @@ Page({
         formData: formData
       })
     }
-    console.log(this.data.formData)
+    // console.log(this.data.formData)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let that = this
-    let listData = [{
-      isTow: false,
-      title: "体温",
-      unit: "°C",
-      value: ""
-    }, {
-      isTow: false,
-      title: "体重",
-      unit: "KG",
-      value: ""
-    }, {
-      isTow: false,
-      title: "身高",
-      unit: "CM",
-      value: ""
-    }, {
-      isTow: false,
-      title: "尿酸",
-      unit: "mg/dl",
-      value: ""
-    }, {
-      isTow: false,
-      title: "血粆",
-      unit: "mol/L",
-      value: ""
-    }, {
-      isTow: false,
-      title: "心率",
-      unit: "次/min",
-      value: ""
-    }, {
-      Tow: [{
-        title: "收缩压",
-        unit: "mmHg",
-        value: ""
-      }, {
-        title: "舒张压",
-        unit: "mmHg",
-        value: ""
-      }],
-      isTow: true,
-      title: "血压"
-    }, {
-      Tow: [{
-          title: "左眼",
-          unit: "",
-          value: ""
-        },
-        {
-          title: "右眼",
-          unit: "",
-          value: ""
-        },
-      ],
-      isTow: true,
-      title: "视力"
-    }]
+    // let listData = [{
+    //   isTow: false,
+    //   title: "体温",
+    //   unit: "°C",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "体重",
+    //   unit: "KG",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "身高",
+    //   unit: "CM",
+    //   value: ""
+    // }, {
+    //   Tow: [{
+    //       title: "左眼",
+    //       unit: "",
+    //       value: ""
+    //     },
+    //     {
+    //       title: "右眼",
+    //       unit: "",
+    //       value: ""
+    //     },
+    //   ],
+    //   isTow: true,
+    //   title: "视力"
+    // }, {
+    //   Tow: [{
+    //     title: "收缩压",
+    //     unit: "mmHg",
+    //     value: ""
+    //   }, {
+    //     title: "舒张压",
+    //     unit: "mmHg",
+    //     value: ""
+    //   }],
+    //   isTow: true,
+    //   title: "血压"
+    // }, {
+    //   isTow: false,
+    //   title: "骨髓肌量",
+    //   unit: "公斤",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "水分量",
+    //   unit: "%",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "蛋白质",
+    //   unit: "%",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "骨盐量",
+    //   unit: "公斤",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "脂肪量",
+    //   unit: "%",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "身体类型",
+    //   unit: "",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "身体形态",
+    //   unit: "",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "身体年龄",
+    //   unit: "岁",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "基础代谢率",
+    //   unit: "千焦",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "去脂体重",
+    //   unit: "公斤",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "心率",
+    //   unit: "次/min",
+    //   value: ""
+    // }, {
+    //   isTow: false,
+    //   title: "身体得分",
+    //   unit: "分",
+    //   value: ""
+    // }, ]
+    // console.log("listData", listData)
+    // this.setData({
+    //   formData: listData,
+    // })
     wx.cloud.callFunction({
       name: 'isShow'
     }).then(res => {
@@ -146,7 +195,6 @@ Page({
         get: "otherPeople",
         openid: that.data.openid
       },
-
     }).then(res => {
       console.log(res.result)
       this.setData({
@@ -223,6 +271,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      formData: ""
+    })
     wx.cloud.callFunction({
       name: "healthData",
       data: {
