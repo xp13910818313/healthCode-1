@@ -62,6 +62,9 @@ Page({
       this.setData({
         formData: formData
       })
+      wx.navigateTo({
+        url: './form?data=' + JSON.stringify(formData),
+      })
       wx.hideLoading({
         complete: (res) => {},
       })
@@ -182,7 +185,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.cloud.callFunction({
+      name: "healthData",
+      data: {
+        type: "list"
+      },
+      success: r => {
+        console.log(r.result.data[0].list)
 
+        this.setData({
+          formData: r.result.data[0].list,
+        })
+      }
+    })
   },
 
   /**
