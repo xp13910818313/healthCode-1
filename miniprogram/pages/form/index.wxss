@@ -154,7 +154,20 @@ page {
 .voiceBox .voice {
   width: 100%;
   padding: 5px;
+  padding-right: 55rpx;
   box-sizing: border-box;
+}
+
+.voiceBox .del {
+  width: 50rpx;
+  height: 50rpx;
+  padding:5rpx;
+  position: absolute;
+  right: 5rpx;
+  top: 40rpx;
+}
+.hidden {
+  display: none;
 }
 
 .voiceBox .btn-style {

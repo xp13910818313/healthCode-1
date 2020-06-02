@@ -41,7 +41,8 @@
 	<view class="voice-box">
 		<view class="title">健康管理师评估：</view>
 		<view class="voiceBox">
-			<textarea value="{{voice}}" maxlength="-1" class="voice"></textarea>
+			<textarea bindinput="text" value="{{voice}}"  maxlength="-1" class="voice"></textarea>
+			<image class="del" wx:if="{{del}}" bindtap="del" src="../../image/del.png"></image>
 			<view>
 				<image bindtouchstart="touchdown_plugin" bindtouchend="touchup_plugin" class="btn-style" src="../../image/mai.png"></image>
 			</view>
