@@ -14,6 +14,7 @@ page {
   box-sizing: border-box;
   background-color: #fff;
   padding: 60rpx;
+  height: 750rpx;
 }
 
 #canvas {

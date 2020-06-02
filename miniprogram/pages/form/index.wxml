@@ -22,31 +22,34 @@
 					<view class="unit fl">{{item.unit}}</view>
 				</view>
 			</view>
-			<view class="T" wx:else>
-				<view class="form-T">{{item.title}}：</view>
-				<view class="form-box">
-					<view class="form-box-box clearfix" wx:for="{{item.Tow}}" wx:for-index="key" wx:for-item="itemName" wx:key="k">
-						<view class="form-t fl">{{itemName.title}}</view>
-						<input type="number fl" class="form-input form-item-content" data-index="{{index}}" data-key="{{key}}" data-isTow="{{item.isTow}}" data-name="{{itemName.title}}" bindinput="formChange" placeholder="输入{{itemName.title}}"></input>
-						<view class="unit fl">{{itemName.unit}}</view>
+			<block wx:else>
+				<view class="T">
+					<view class="form-T">{{item.title}}：</view>
+					<view class="form-box">
+						<view class="form-box-box clearfix" wx:for="{{item.Tow}}" wx:for-index="key" wx:for-item="itemName" wx:key="k">
+							<view class="form-t fl">{{itemName.title}}</view>
+							<input type="number fl" class="form-input form-item-content" data-index="{{index}}" data-key="{{key}}" data-isTow="{{item.isTow}}" data-name="{{itemName.title}}" bindinput="formChange" placeholder="输入{{itemName.title}}"></input>
+							<view class="unit fl">{{itemName.unit}}</view>
+						</view>
 					</view>
 				</view>
-			</view>
-		</view>
 
+			</block>
+		</view>
+		<!-- 语音识别 -->
+		<view class="voice-box">
+			<view class="title">健康管理师评估：</view>
+			<view class="voiceBox">
+				<textarea bindinput="formChange" value="{{voice}}" maxlength="-1" class="voice"></textarea>
+				<view>
+					<image bindtouchstart="touchdown_plugin" bindtouchend="touchup_plugin" class="btn-style" src="../../image/mai.png"></image>
+				</view>
+			</view> 
+		</view>
 
 		<view wx:if='{{show}}'>openid：{{openid}}</view>
 	</view>
-	<!-- 语音识别 -->
-	<view class="voice-box">
-		<view class="title">健康管理师评估：</view>
-		<view class="voiceBox">
-			<textarea value="{{voice}}" maxlength="-1" class="voice"></textarea>
-			<view>
-				<image bindtouchstart="touchdown_plugin" bindtouchend="touchup_plugin" class="btn-style" src="../../image/mai.png"></image>
-			</view>
-		</view>
-	</view>
+
 
 	<view class="submit-btn">
 		<button type="primary" bindtap="submitForm">提交</button>

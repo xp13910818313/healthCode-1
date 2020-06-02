@@ -56,13 +56,13 @@ Page({
   //表单输入监听
   formChange(e) {
     let formData = this.data.formData
+    console.log(e.detail.value)
     if (!e.currentTarget.dataset.istow) {
       formData[e.currentTarget.dataset.index].value = e.detail.value
       this.setData({
         formData: formData
       })
     } else {
-
       formData[e.currentTarget.dataset.index].Tow[e.currentTarget.dataset.key].value = e.detail.value
       this.setData({
         formData: formData
@@ -177,7 +177,10 @@ Page({
     //   unit: "分",
     //   value: ""
     // }, {
-    // title:""
+    //   title: "健康管理师评估：",
+    //   isTow: false,
+    //   unit: "",
+    //   value: ""
     // }]
     // console.log("list", list)
     // this.setData({
@@ -337,11 +340,11 @@ Page({
     }
     manager.onStop = function (res) {
       console.log('manager.onStop')
-      console.log('识别结果',res.result)//语音识别信息打印
+      console.log('识别结果', res.result) //语音识别信息打印
       var voice = that.data.voice
       voice = voice.concat(res.result)
       that.setData({
-        voice:voice
+        voice: voice
       })
       // UTIL.log("record file path", res.tempFilePath)
       // UTIL.log("result", res.result)

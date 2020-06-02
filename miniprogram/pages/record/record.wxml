@@ -15,27 +15,29 @@
 
 	</view>
 	<view class="list">
-		<view class="list-item" wx:for="{{dataList}}">
-			<view class="time">
-				<text>时间:</text>
-				<text>{{item.time}}</text>
-			</view>
-			<view class="quota">
-				<view class="content" wx:for="{{item.healthData}}" wx:for-item="itemName">
-					<block wx:if="{{!itemName.isTow}}">
-						<text>{{itemName.title}}:</text>
-						<text>{{itemName.value+itemName.unit}}</text>
-					</block>
-					<block wx:else>
-						<view class="content-title">{{itemName.title}}:</view>
-						<view class="content-item" wx:for="{{itemName.Tow}}" wx:for-item="itemName1">
-							<text>{{itemName1.title}}:</text>
-							<text>{{itemName1.value + itemName1.unit}}</text>
-						</view>
-					</block>
+		<block wx:if="{{dataList.length != 0}}">
+			<view class="list-item" wx:for="{{dataList}}">
+				<view class="time">
+					<text>时间:</text>
+					<text>{{item.time}}</text>
+				</view>
+				<view class="quota">
+					<view class="content" wx:for="{{item.healthData}}" wx:for-item="itemName">
+						<block wx:if="{{!itemName.isTow}}">
+							<text>{{itemName.title}}:</text>
+							<text>{{itemName.value+itemName.unit}}</text>
+						</block>
+						<block wx:else>
+							<view class="content-title">{{itemName.title}}:</view>
+							<view class="content-item" wx:for="{{itemName.Tow}}" wx:for-item="itemName1">
+								<text>{{itemName1.title}}:</text>
+								<text>{{itemName1.value + itemName1.unit}}</text>
+							</view>
+						</block>
+					</view>
 				</view>
 			</view>
-
-		</view>
+		</block>
+		<view class="null" wx:else>暂无内容</view>
 	</view>
 </view>
