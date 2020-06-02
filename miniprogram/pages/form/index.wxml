@@ -26,7 +26,7 @@
 			<view class="form-box">
 				<view class="form-box-box" wx:for="{{item.Tow}}" wx:for-index="key" wx:for-item="itemName" wx:key="k">
 					<view class="form-t">{{itemName.title}}</view>
-					<input type="number" class="form-input form-item-content" data-index="{{index}}{{key}}" data-isTow="{{item.isTow}}" data-name="{{itemName.title}}" bindinput="formChange" placeholder="输入{{itemName.title}}"></input>
+					<input type="number" class="form-input form-item-content" data-index="{{index}}" data-key="{{key}}" data-isTow="{{item.isTow}}" data-name="{{itemName.title}}" bindinput="formChange" placeholder="输入{{itemName.title}}"></input>
 					<view class="unit">{{itemName.unit}}</view>
 				</view>
 			</view>

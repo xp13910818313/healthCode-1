@@ -33,12 +33,11 @@ Page({
       }
     }).then(res => {
       console.log('添加成功', res)
-      let formData = this.data.formData
-      formData.forEach(elem => {
-        elem.value = ''
-      });
       this.setData({
         formData: formData
+      })
+      wx.navigateTo({
+        url: './form?data='+JSON.stringify(formData),
       })
       wx.hideLoading({
         complete: (res) => {},
@@ -50,17 +49,17 @@ Page({
   },
   //表单输入监听
   formChange(e) {
-    console.log(e.currentTarget.dataset.name)
-    console.log(e.detail.value)
-    console.log(e.currentTarget.dataset.index)
+    let formData = this.data.formData
     if (!e.currentTarget.dataset.istow) {
-      let formData = this.data.formData
       formData[e.currentTarget.dataset.index].value = e.detail.value
       this.setData({
         formData: formData
       })
-    }else{
-      // for( this.data.formData){}
+    } else {
+      formData[e.currentTarget.dataset.index].Tow[e.currentTarget.dataset.key].value = e.detail.value
+      this.setData({
+        formData: formData
+      })
     }
     console.log(this.data.formData)
   },
@@ -76,8 +75,9 @@ Page({
       },
       success: r => {
         console.log(r.result.data[0].list)
+        
         that.setData({
-          formData: r.result.data[0].list
+          formData: r.result.data[0].list,
         })
       }
     })

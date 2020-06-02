@@ -9,32 +9,39 @@ exports.main = async (event, context) => {
 
   switch (event.type) {
     case 'get': {
-      if(event.openid){
+      if (event.openid) {
         return await cloud.database().collection('healthData').where({
-          openid:event.openid
-        }).orderBy('time','desc').field({
-         userInfo:false
+          openid: event.openid
+        }).orderBy('time', 'desc').field({
+          userInfo: false
         }).get()
-      } else if(event.mydata){
+      } else if (event.mydata) {
         return await cloud.database().collection('healthData').where({
-          openid:wxContext.OPENID
+          openid: wxContext.OPENID
         }).get()
       }
       return await cloud.database().collection('healthData').get()
-      
+
     }
     case 'add': {
       return await cloud.database().collection('healthData').add({
         data: event.formData
       })
     }
-    case 'count':{
+    case 'count': {
       return await cloud.database().collection('healthData').where({
-        openid:wxContext.OPENID
+        openid: wxContext.OPENID
       }).count()
     }
-    case 'list' :{
+    case 'list': {
       return await cloud.database().collection('health_list').get()
+    }
+    case 'getlist': {
+      return await cloud.database().collection('health_list').add({
+        data: {
+          list: event.list
+        }
+      })
     }
   }
 }
