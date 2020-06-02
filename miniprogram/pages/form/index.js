@@ -65,9 +65,10 @@ Page({
       wx.hideLoading({
         complete: (res) => {},
       })
-      wx.showToast({
-        title: '提交成功',
+      wx.navigateTo({
+        url: './form',
       })
+      
     })
   },
   //表单输入监听

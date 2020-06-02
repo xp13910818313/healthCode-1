@@ -1,3 +1,6 @@
+page{
+  background-color: #f4f4f4;
+}
 .record-page {
   padding: 20rpx;
 }
@@ -26,7 +29,7 @@
   display: flex;
 }
 
-.avater .nickName {
+.avatar .nickName {
   flex: 1;
   padding: 0 20rpx;
 }
@@ -48,12 +51,16 @@
 }
 
 .list-item {
-  padding: 20rpx 0;
-  border-bottom: 1px solid #ddd;
+  margin-top: 5px;
+  padding: 20rpx;
+border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
-.list-item:last-child {
-  border-bottom: none
+.list-item:first-child{
+  margin-top: 0;
 }
 
 .quota {
@@ -64,4 +71,13 @@
 .quota .content {
   width: 50%;
   padding: 4px 0;
+  line-height: 68px;
+}
+.content-title{
+  line-height: calc(68px / 3);
+
+}
+.content-item{
+  padding-left: 14px;
+  line-height: calc(68px / 3);
 }
