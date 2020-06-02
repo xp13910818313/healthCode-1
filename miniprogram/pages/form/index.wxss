@@ -2,9 +2,6 @@
 page {
   height: 100%;
 }
-input{
-  text-align: center;
-}
 .form {
   padding: 20rpx;
   height: 100%;
@@ -157,7 +154,20 @@ input{
 .voiceBox .voice {
   width: 100%;
   padding: 5px;
+  padding-right: 55rpx;
   box-sizing: border-box;
+}
+
+.voiceBox .del {
+  width: 40rpx;
+  height: 40rpx;
+  padding:5rpx;
+  position: absolute;
+  right: 5rpx;
+  top: 5px;
+}
+.hidden {
+  display: none;
 }
 
 .voiceBox .btn-style {

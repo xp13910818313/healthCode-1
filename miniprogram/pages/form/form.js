@@ -35,22 +35,22 @@ Page({
 
     var orderInfo;
     orderInfo = '<CB>体测报告</CB><BR>';
+    orderInfo += `时间：${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}<BR>`;
     orderInfo += '--------------------------------<BR>';
     this.data.formData.forEach(elem => {
       if (!elem.isTow) {
-        orderInfo += `${elem.title}:${elem.value+ elem.unit}<BR>`;
+        orderInfo += `${elem.title}：${elem.value}${elem.unit?elem.unit:''}<BR>`;
       }else{
-        orderInfo += `${elem.title}:<BR>`;
+        orderInfo += `${elem.title}：<BR>`;
         elem.Tow.forEach(el=>{
-          orderInfo += ` ${el.title}:${el.value+el.unit}<BR>`;
+          orderInfo += ` ${el.title}：${el.value}${el.unit?el.unit:''}<BR>`;
         })
-
       }
     });
 
     orderInfo += '--------------------------------<BR>';
-    orderInfo += `时间：${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}<BR>`;
-    orderInfo += '<QR>https://wec.antbiz.cn/qrcode?openid=o7CqC4tuyzdJoM-feijSFwmdkIEE</QR>'; //把二维码字符串用标签套上即可自动生成二维码
+    orderInfo += '<QR>https://wec.antbiz.cn/qrcode?openid=o7CqC4tuyzdJoM-feijSFwmdkIEE</QR><BR>'; //把二维码字符串用标签套上即可自动生成二维码
+    orderInfo += '扫描二维码查看体测记录<BR>'; //把二维码字符串用标签套上即可自动生成二维码
 
     //***接口返回值说明***
     //正确例子：{"msg":"ok","ret":0,"data":"123456789_20160823165104_1853029628","serverExecutedTime":6}

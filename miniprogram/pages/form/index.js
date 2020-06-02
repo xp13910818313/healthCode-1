@@ -16,7 +16,8 @@ Page({
     ID: '',
     openid: null,
     formData: null,
-    voice: ''
+    voice: '',
+    del:false
   },
   // 表单提交
   submitForm() {
@@ -27,7 +28,8 @@ Page({
     let data=this.data.formData
     data.push({
       title:'健康管理师评估',
-      value:this.data.voice
+      value:this.data.voice,
+      unit:''
     })
     
     let formData = {
@@ -72,13 +74,7 @@ Page({
     }
     console.log(this.data.formData)
   },
-  textAreaChange(e){
-    console.log(e)
 
-    this.setData({
-      voice:e.detail.value.trim()
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -278,6 +274,29 @@ Page({
     })
   },
 
+  del:function() {
+    this.setData({
+      voice:'',
+      del:false
+    })
+
+  },
+  text(e){
+    console.log(this.data.voice)
+    console.log(e.detail.value)
+    this.setData({
+      voice:e.detail.value.trim()
+    })
+    if(this.data.voice=='') {
+      this.setData({
+        del:!false
+      })
+    } else {
+      this.setData({
+        del:true
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
