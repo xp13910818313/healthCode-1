@@ -335,9 +335,11 @@ Page({
     }
     manager.onStop = function (res) {
       console.log('manager.onStop')
-      console.log('识别结果', res.result) //语音识别信息打印
+      console.log('识别结果',res.result)//语音识别信息打印
+      var voice = that.data.voice
+      voice = voice.concat(res.result)
       that.setData({
-        voice: res.result
+        voice:voice
       })
       // UTIL.log("record file path", res.tempFilePath)
       // UTIL.log("result", res.result)
@@ -353,6 +355,9 @@ Page({
   //添加两个方法
   touchdown_plugin: function () {
     var _this = this
+    wx.showLoading({
+      title: '录音中……',
+    })
     // UTIL.stopTTS();
     manager.start({
       duration: 30000,
@@ -362,6 +367,9 @@ Page({
   //手指松开
   touchup_plugin: function () {
     manager.stop();
+    wx.hideLoading({
+      complete: (res) => {},
+    })
     wx.showToast({
       title: '正在识别……',
       icon: 'loading',
