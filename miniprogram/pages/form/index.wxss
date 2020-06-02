@@ -7,6 +7,7 @@ page {
   padding: 20rpx;
   height: 100%;
   box-sizing: border-box;
+  /* margin-bottom: 400rpx; */
 }
 
 .form .head {
@@ -72,11 +73,13 @@ page {
 }
 
 .form .submit-btn {
-  width: calc(100% - 40rpx);
-  position: fixed;
+  /* width: calc(100% - 40rpx); */
+  width: 100%;
+  /* position: fixed; */
   bottom: 20rpx;
   height: 200rpx;
   display: flex;
+  margin-top: 120rpx;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -143,4 +146,25 @@ page {
 
 .cccc {
   font-size: 24rpx;
+}
+
+.voiceBox {
+  display: flex;
+  position: relative;
+}
+.voiceBox .voice {
+  width: 100%;
+}
+.voiceBox .btn-style {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  bottom: -100rpx;
+  left: 50%;
+  margin-left: -40rpx;
+}
+.voice {
+  margin-top: 30rpx;
+  border:1rpx solid #ccc;
+  width: 350rpx;
 }
