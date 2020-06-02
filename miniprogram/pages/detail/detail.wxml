@@ -1,0 +1,21 @@
+<!--pages/detail/detail.wxml-->
+<!-- <view class="reference">
+<image class="img" bindtap="amplification" src="../../image/123.jpg"></image>
+</view> -->
+<view class="List" wx:for="{{data}}">
+	<!-- 日期 -->
+	<view class="top">
+		<text class="title">{{item.date}}</text>
+		<text class="title">收缩压</text>
+		<text class="title">舒张压</text>
+		<text class="title">心率</text>
+		<!-- <text class="title">指数</text> -->
+	</view>
+	<view class="data">
+		<text class="title">{{item.time}}</text>
+		<text class="title">{{item.value}}</text>
+		<text class="title">54</text>
+		<text class="title">78</text>
+		<!-- <image class="{{show==true?'img1':'img'}}" bindtap="show" src="../../image/jiao.png"></image> -->
+	</view>
+</view>

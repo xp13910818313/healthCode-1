@@ -65,9 +65,6 @@ Page({
       wx.hideLoading({
         complete: (res) => {},
       })
-      wx.navigateTo({
-        url: './form',
-      })
       
     })
   },
