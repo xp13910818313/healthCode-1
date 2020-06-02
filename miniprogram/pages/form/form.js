@@ -31,6 +31,7 @@ Page({
     //<W></W>字体变宽一倍,"<QR></QR>"为二维码,"<BOLD></BOLD>"为字体加粗,"<RIGHT></RIGHT>"为右对齐
     //拼凑订单内容时可参考如下格式
     //根据打印纸张的宽度，自行调整内容的格式，可参考下面的样例格式
+
     var orderInfo;
     orderInfo = '<CB>体测报告</CB><BR>';
     orderInfo += '--------------------------------<BR>';
@@ -45,21 +46,11 @@ Page({
 
       }
     });
-    // orderInfo += '体温：36℃<BR>';
-    // orderInfo += '体重：56KG<BR>';
-    // orderInfo += '身高：180CM<BR>';
-    // orderInfo += '尿酸：45mg/dL<BR>';
-    // orderInfo += '血粆：5mol/L<BR>';
-    // orderInfo += '血压：<BR>';
-    // orderInfo += '  收缩压：34mmHg<BR>';
-    // orderInfo += '  舒张压：34mmHg<BR>';
-    // orderInfo += '视力：<BR>';
-    // orderInfo += '  左眼：5.3<BR>';
-    // orderInfo += '  右眼：5.2<BR>';
+
     orderInfo += '--------------------------------<BR>';
     orderInfo += '专家建议：多喝热水！！！<BR>';
     orderInfo += `时间：${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}<BR>`;
-    orderInfo += '<QR>http://www.dzist.com</QR>'; //把二维码字符串用标签套上即可自动生成二维码
+    orderInfo += '<QR>/pages/index/index</QR>'; //把二维码字符串用标签套上即可自动生成二维码
 
     //***接口返回值说明***
     //正确例子：{"msg":"ok","ret":0,"data":"123456789_20160823165104_1853029628","serverExecutedTime":6}
