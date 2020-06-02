@@ -34,6 +34,9 @@ page {
 .list-box {
   width: 100%;
   margin-top: 120rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .list {

@@ -2,7 +2,30 @@ var _this
 var app = getApp()
 Page({
   data: {
-
+    openid:'',
+    lable:[
+      {
+        title:'血压'
+      },
+      {
+        title:'视力'
+      },
+      {
+        title:'体脂'
+      },
+      {
+        title:'身高'
+      },
+      {
+        title:'体重'
+      },
+      {
+        title:'血糖'
+      },
+      {
+        title:'尿酸'
+      },
+    ]
   },
 
   openConfirm: function (e) {
@@ -76,6 +99,10 @@ Page({
     })
     setTimeout(function () {
       console.log("全局信息", app.globalData.userInfo)
+      _this.setData({
+        openid:app.globalData.userInfo.openid
+      })
+      console.log(_this.data.openid)
       if (app.globalData.userInfo) {
         _this.setData({
           userInfo: app.globalData.userInfo
@@ -86,6 +113,14 @@ Page({
         complete: (res) => {},
       })
     }, 1000)
+  },
+
+  // 数值详情页
+  toDetail:function(e) {
+    console.log(e.target.dataset.id)
+      wx.navigateTo({
+        url: `../detail/detail?id=${e.target.dataset.id}&openid=${this.data.openid}`,
+      })
   },
 
   /**
