@@ -37,6 +37,12 @@ Page({
     this.data.formData.forEach(elem => {
       if (!elem.isTow) {
         orderInfo += `${elem.title}:${elem.value+ elem.unit}<BR>`;
+      }else{
+        orderInfo += `${elem.title}:<BR>`;
+        elem.Tow.forEach(el=>{
+          orderInfo += ` ${el.title}:${el.value+el.unit}<BR>`;
+        })
+
       }
     });
     // orderInfo += '体温：36℃<BR>';
@@ -52,7 +58,7 @@ Page({
     // orderInfo += '  右眼：5.2<BR>';
     orderInfo += '--------------------------------<BR>';
     orderInfo += '专家建议：多喝热水！！！<BR>';
-    orderInfo += '时间：' + new Date() + '<BR>';
+    orderInfo += `时间：${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}<BR>`;
     orderInfo += '<QR>http://www.dzist.com</QR>'; //把二维码字符串用标签套上即可自动生成二维码
 
     //***接口返回值说明***
@@ -154,6 +160,9 @@ Page({
      *  打印订单方法：Open_printMsg
      */
     function print_r(SN, orderInfo, TIMES) {
+      wx.showLoading({
+        title: '正在打印',
+      })
       wx.request({
         url: 'https://' + HOST + PATH,
         data: {
@@ -172,6 +181,9 @@ Page({
         },
         success: function (res) {
           console.log(res.data)
+          wx.hideLoading({
+            complete: (res) => {},
+          })
         }
       })
     }
@@ -181,10 +193,12 @@ Page({
    */
   onLoad: function (options) {
     if (options.data) {
+      console.log(JSON.parse(options.data))
       this.setData({
-        formData: JSON.parse(options.data)
+        formData: JSON.parse(options.data).healthData
       })
     }
+
 
   },
 

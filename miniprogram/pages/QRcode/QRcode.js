@@ -57,6 +57,7 @@ Page({
       wx.cloud.callFunction({
         name: 'QRCode-get',
         data: {
+          path:'/pages/form/index',
           openid: that.data.userInfo.openid
         },
         success: res => {

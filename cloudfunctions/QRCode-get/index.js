@@ -8,7 +8,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   try {
     const result = await cloud.openapi.wxacode.get({
-      path: `/pages/form/index?openid=${event.openid}`,
+      path: `${event.path}?openid=${event.openid}`,
       width: 460
     })
 

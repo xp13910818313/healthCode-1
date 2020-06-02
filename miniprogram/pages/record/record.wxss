@@ -52,11 +52,15 @@ page{
 
 .list-item {
   margin-top: 5px;
-  padding: 20rpx;
+
 border-radius: 6px;
   background-color: #fff;
   border: 1px solid #ddd;
   box-sizing: border-box;
+}
+.list-item .time{
+  border-bottom: 1px solid #ddd;
+  padding: 20rpx;
 }
 
 .list-item:first-child{
@@ -66,6 +70,7 @@ border-radius: 6px;
 .quota {
   display: flex;
   flex-wrap: wrap;
+  padding: 20rpx;
 }
 
 .quota .content {

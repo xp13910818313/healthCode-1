@@ -1,4 +1,24 @@
 <!--pages/form/form.wxml-->
 <view class="form-etail">
-<button type="primary" bindtap="printer">打印</button>
+	<view class="weui-msg">
+		<view class="weui-msg__icon-area">
+			<icon type="success" size="64"></icon>
+		</view>
+		<view class="weui-msg__text-area">
+			<view class="weui-msg__title">提交成功</view>
+		</view>
+		<view class="weui-msg__opr-area">
+			<view class="weui-btn-area">
+				<button class="weui-btn" type="primary" bindtap="printer">打印纸质记录</button>
+			</view>
+		</view>
+		<view class="weui-msg__extra-area">
+			<view class="weui-footer">
+				<view class="weui-footer__links">
+					<navigator url="/pages/index/index" class="weui-footer__link">返回首页</navigator>
+				</view>
+				<!-- <view class="weui-footer__text">社康驿站</view> -->
+			</view>
+		</view>
+	</view>
 </view>

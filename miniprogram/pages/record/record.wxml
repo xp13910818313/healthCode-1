@@ -17,7 +17,7 @@
 	<view class="list">
 		<view class="list-item" wx:for="{{dataList}}">
 			<view class="time">
-				<text>时间:</text>
+				<!-- <text>时间:</text> -->
 				<text>{{item.time}}</text>
 			</view>
 			<view class="quota">
