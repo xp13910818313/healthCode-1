@@ -91,6 +91,27 @@
 					"pathName": "pages/form/form",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/aboutUs/aboutUs",
+					"pathName": "pages/aboutUs/aboutUs",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/mine",
+					"pathName": "pages/mine/mine",
+					"query": "openid=o7CqC4tuyzdJoM-feijSFwmdkIEE",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/setting/setting",
+					"pathName": "pages/setting/setting",
+					"query": "openid=o7CqC4tuyzdJoM-feijSFwmdkIEE",
+					"scene": null
 				}
 			]
 		}

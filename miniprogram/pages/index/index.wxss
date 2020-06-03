@@ -93,3 +93,29 @@ page {
   color: #999;
  
 }
+.about-us{
+  text-align: center;
+  text-decoration: underline;
+  color: #6b6b6b;
+  font-size: 14px;
+}
+.head{
+  text-align: right;
+  color: #6b6b6b;
+}
+.head .mine-page{
+  display: inline-block;
+  line-height: 50rpx;
+
+}
+.login{
+  width: 90rpx;
+  border-radius: 50%;
+}
+.mine-page text{
+  display: block;
+  font-size: 14px;
+  line-height: 50rpx;
+  text-align: center;
+
+}

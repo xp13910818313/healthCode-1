@@ -2,50 +2,37 @@ var _this
 var app = getApp()
 Page({
   data: {
-    openid:'',
-    lable:[
-      {
-        title:'血压'
+    show: false,
+    openid: '',
+    lable: [{
+        title: '血压'
       },
       {
-        title:'视力'
+        title: '视力'
       },
       {
-        title:'体脂'
+        title: '体脂'
       },
       {
-        title:'身高'
+        title: '身高'
       },
       {
-        title:'体重'
+        title: '体重'
       },
       {
-        title:'血糖'
+        title: '血糖'
       },
       {
-        title:'尿酸'
+        title: '尿酸'
       },
     ]
   },
-  getScancode: function () {
-    var _this = this;
-    // 允许从相机和相册扫码
-    wx.scanCode({
-      success: (res) => {
-        console.log(res)
-        // wx.navigateTo({
-        //   url: '../index/index?title=' + res.result
-        // })
-        // var result = res.result;
-
-        // _this.setData({
-        //   result: result,
-
-        // })
-      }
+  toABoutUs() {
+    wx.navigateTo({
+      url: '../aboutUs/aboutUs',
     })
-
   },
+
   openConfirm: function (e) {
     if (_this.data.userInfo == null) {
 
@@ -124,14 +111,22 @@ Page({
    */
   onLoad: function (options) {
     _this = this
+    wx.cloud.callFunction({
+      name: 'isShow'
+    }).then(res => {
+      console.log(res.result.data[0].show)
+      this.setData({
+        show: res.result.data[0].show
+      })
+    })
     setTimeout(function () {
       console.log("全局信息", app.globalData.userInfo)
-      if(app.globalData.userInfo){
+      if (app.globalData.userInfo) {
         _this.setData({
-          openid:app.globalData.userInfo.openid
+          openid: app.globalData.userInfo.openid
         })
       }
-      
+
       console.log(_this.data.openid)
       if (app.globalData.userInfo) {
         _this.setData({
@@ -143,11 +138,11 @@ Page({
   },
 
   // 数值详情页
-  toDetail:function(e) {
+  toDetail: function (e) {
     console.log(e.target.dataset.id)
-      wx.navigateTo({
-        url: `../detail/detail?id=${e.target.dataset.id}&openid=${this.data.openid}`,
-      })
+    wx.navigateTo({
+      url: `../detail/detail?id=${e.target.dataset.id}&openid=${this.data.openid}`,
+    })
   },
 
   /**
@@ -161,7 +156,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+this.setData({
+  userInfo:getApp().globalData.userInfo
+})
     // console.log("月", Number(new Date().getMonth() + 1) > 9 ? Number(new Date().getMonth() + 1) : "0" + Number(new Date().getMonth() + 1))
   },
 
