@@ -14,7 +14,7 @@
 			我的健康码
 		</button>
 		<view class="mine" bindtap="toRecord" data-btn="record">我的体测记录</view>
-		<view class="banben">1.0.1版本</view>
+		<!-- <view class="banben" bindtap="getScancode">1.0.1版本</view> -->
 	</view>
 	<mp-auth show="{{dialogShow}}" bindgetUserInfo="bindgetuserinfo"></mp-auth>
 </view>

@@ -66,7 +66,8 @@ page {
   border: 1px solid #ddd;
   box-sizing: border-box;
 }
-.list-item .time{
+
+.list-item .time {
   border-bottom: 1px solid #ddd;
   padding: 20rpx;
 }
@@ -85,15 +86,18 @@ page {
   width: 50%;
   padding: 4px 0;
 }
-.quota .content.fullwidth{
+
+.quota .content.fullwidth {
   width: 100%;
 }
-.fullwidth .full-content{
+
+.fullwidth .full-content {
   word-wrap: break-word;
+  text-indent: 28px;
 }
+
 .content-title {
   line-height: calc(68px / 3);
-
 }
 
 .content-item {

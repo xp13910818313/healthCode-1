@@ -27,7 +27,25 @@ Page({
       },
     ]
   },
+  getScancode: function () {
+    var _this = this;
+    // 允许从相机和相册扫码
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+        // wx.navigateTo({
+        //   url: '../index/index?title=' + res.result
+        // })
+        // var result = res.result;
 
+        // _this.setData({
+        //   result: result,
+
+        // })
+      }
+    })
+
+  },
   openConfirm: function (e) {
     if (_this.data.userInfo == null) {
 

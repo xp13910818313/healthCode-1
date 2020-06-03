@@ -38,7 +38,7 @@ Page({
 
     var orderInfo = '';
     orderInfo += '<CB>社区健康驿站</CB><BR>';
-    orderInfo += '<CB>（上水径）</CB><BR>';
+    orderInfo += '<C>（上水径）</C><BR>';
     orderInfo += '<CB>体测记录</CB><BR>';
     orderInfo += `地址：${this.data.landmark.address}<BR>`;
     let phone=''
