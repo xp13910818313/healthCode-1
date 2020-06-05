@@ -112,6 +112,12 @@
 					"pathName": "pages/setting/setting",
 					"query": "openid=o7CqC4tuyzdJoM-feijSFwmdkIEE",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addRecord/addRecord",
+					"pathName": "pages/addRecord/addRecord",
+					"scene": null
 				}
 			]
 		}

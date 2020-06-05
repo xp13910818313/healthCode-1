@@ -7,7 +7,7 @@ Page({
   data: {
     formData: [],
     userInfo: null,
-    landmark:null
+    landmark: null
   },
 
   printer() {
@@ -25,67 +25,27 @@ Page({
     var PATH = "/Api/Open/"; //接口路径
     var STIME = new Date().getTime(); //请求时间,当前时间的秒数
     var SIG = hex_sha1(USER + UKEY + STIME); //获取签名
-
-    //标签说明：
-    //单标签:
-    //"<BR>"为换行,"<CUT>"为切刀指令(主动切纸,仅限切刀打印机使用才有效果)
-    //"<LOGO>"为打印LOGO指令(前提是预先在机器内置LOGO图片),"<PLUGIN>"为钱箱或者外置音响指令
-    //成对标签：
-    //"<CB></CB>"为居中放大一倍,"<B></B>"为放大一倍,"<C></C>"为居中,<L></L>字体变高一倍
-    //<W></W>字体变宽一倍,"<QR></QR>"为二维码,"<BOLD></BOLD>"为字体加粗,"<RIGHT></RIGHT>"为右对齐
-    //拼凑订单内容时可参考如下格式
-    //根据打印纸张的宽度，自行调整内容的格式，可参考下面的样例格式
-
-    var orderInfo = '';
-    orderInfo += '<CB>社区健康驿站</CB><BR>';
-    orderInfo += '<C>（上水径）</C><BR>';
-    orderInfo += '<CB>体测记录</CB><BR>';
-    orderInfo += `地址：${this.data.landmark.address}<BR>`;
-    let phone=''
-    this.data.landmark.phone.forEach(el => {
-      phone+=el+' '
-    });
-    orderInfo += `电话：${phone}<BR>`;
-    
-    orderInfo += `时间：${new Date(this.data.time).getFullYear()}-${new Date(this.data.time).getMonth()}-${new Date(this.data.time).getDate()} ${new Date(this.data.time).getHours()}:${new Date(this.data.time).getMinutes()}:${new Date(this.data.time).getSeconds()}<BR>`;
-    orderInfo += `用户ID:${this.data.userInfo.userInfo.userID}<BR>`;
-    orderInfo += '--------------------------------<BR>';
-    this.data.formData.forEach(elem => {
-      
-      if (!elem.isTow) {
-        
-        if (elem.title == '健康管理师建议') {
-          orderInfo += '--------------------------------<BR>';
-          orderInfo += `${elem.title}：<BR>`;
-          orderInfo += `${elem.value+elem.unit}<BR>`;
-        }else{
-          orderInfo += `${elem.title}：${elem.value+elem.unit}<BR>`;
-        }
-      } else {
-        orderInfo += `${elem.title}：<BR>`;
-        elem.Tow.forEach(el => {
-          orderInfo += ` ${el.title}：${el.value+el.unit}<BR>`;
-        })
+    var hexcase = 0;
+    var chrsz = 8;
+    wx.cloud.callFunction({
+      name: 'printer',
+      data: {
+        landmark: this.data.landmark,
+        time: this.data.time,
+        formData: this.data.formData,
+        userID: this.data.userInfo.userInfo.userID
       }
-    });
-
-    orderInfo += '--------------------------------<BR>';
-    orderInfo += '<C>和谐邻里    健康社区</C><BR>';
-    orderInfo += '扫描下方二维码查看体测记录<BR>'; 
-    orderInfo += '<QR>https://wec.antbiz.cn/qrcode?openid=o7CqC4tuyzdJoM-feijSFwmdkIEE</QR><BR>'; //把二维码字符串用标签套上即可自动生成二维码
-    orderInfo += '备注：本单据只做健康咨询使用，不具有医学诊断功能。'; 
-
-
+    }).then(res => {
+      console.log('printer==>', res.result)
+      print_r(SN, res.result, 1);
+    })
 
     //***接口返回值说明***
     //正确例子：{"msg":"ok","ret":0,"data":"123456789_20160823165104_1853029628","serverExecutedTime":6}
     //错误：{"msg":"错误信息.","ret":非零错误码,"data":null,"serverExecutedTime":5}
     console.log(orderInfo);
     //打开注释可测试
-    print_r(SN, orderInfo, 1);
-
-    var hexcase = 0;
-    var chrsz = 8;
+    // print_r(SN, orderInfo, 1);
 
     function hex_sha1(s) {
       return binb2hex(core_sha1(AlignSHA1(s)));
@@ -218,14 +178,14 @@ Page({
       title: '加载中',
     })
     wx.cloud.callFunction({
-      name:'landmark',
-      data:{
-        type:'get'
+      name: 'landmark',
+      data: {
+        type: 'get'
       }
-    }).then(res=>{
+    }).then(res => {
       console.log(res.result.data[0])
       this.setData({
-        landmark:res.result.data[0]
+        landmark: res.result.data[0]
       })
       wx.hideLoading({
         complete: (res) => {},
@@ -234,10 +194,10 @@ Page({
     if (getApp().globalData.formData) {
       this.setData({
         formData: getApp().globalData.formData.healthData,
-        time:getApp().globalData.formData.time,
-        userInfo:getApp().globalData.formData.userInfo
+        time: getApp().globalData.formData.time,
+        userInfo: getApp().globalData.formData.userInfo
       })
-      console.log('formdata==>',this.data.formData)
+      console.log('formdata==>', this.data.formData)
     }
   },
 

@@ -34,6 +34,12 @@ exports.main = async (event, context) => {
       return await cloud.database().collection('health_userInfo').where({
         openid: event.openid
       }).get()
+    }else if(event.get == "byId"){
+      return await cloud.database().collection('health_userInfo').where({
+        userInfo: {
+          userID:event.id
+        }
+      }).get()
     }
   }
 }

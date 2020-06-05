@@ -74,10 +74,17 @@ Page({
         wx.navigateTo({
           url: '../aboutUs/aboutUs',
         })
+        break
       }
       case 'setting':{
         wx.navigateTo({
           url: '../setting/setting',
+        })
+        break
+      }
+      case 'add':{
+        wx.navigateTo({
+          url: '../addRecord/addRecord',
         })
       }
     }

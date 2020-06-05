@@ -25,6 +25,12 @@
 				</view>
 				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
 			</view>
+						<view class="weui-cell weui-cell_access">
+				<view class="weui-cell__bd" bindtap="jump" data-type="add">
+					<view style="display: inline-block; vertical-align: middle">添加记录</view>
+				</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+			</view>
 			<view class="weui-cell weui-cell_access">
 				<view class="weui-cell__bd" bindtap="jump" data-type="about">
 					<view style="display: inline-block; vertical-align: middle">关于我们</view>

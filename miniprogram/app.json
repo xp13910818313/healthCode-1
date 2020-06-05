@@ -7,6 +7,7 @@
     "pages/form/form",
     "pages/QRcode/QRcode",
     "pages/record/record",
+    "pages/addRecord/addRecord",
     "pages/aboutUs/aboutUs",
     "pages/mine/mine",
     "pages/setting/setting"
