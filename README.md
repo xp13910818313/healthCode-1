@@ -1,8 +1,8 @@
 # 社康驿站
 
-master:第一个正式版本
+master:1.0.6版本（已上线）
 
-## 参考文档
+dev1:1.0.7版本
 
-- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+
 
