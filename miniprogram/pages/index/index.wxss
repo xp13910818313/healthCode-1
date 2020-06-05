@@ -107,10 +107,13 @@ page {
   display: inline-block;
   line-height: 50rpx;
 
+
 }
+
 .login{
   width: 90rpx;
   border-radius: 50%;
+
 }
 .mine-page text{
   display: block;
