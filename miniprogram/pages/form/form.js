@@ -43,7 +43,7 @@ Page({
     //***接口返回值说明***
     //正确例子：{"msg":"ok","ret":0,"data":"123456789_20160823165104_1853029628","serverExecutedTime":6}
     //错误：{"msg":"错误信息.","ret":非零错误码,"data":null,"serverExecutedTime":5}
-    console.log(orderInfo);
+    // console.log(orderInfo);
     //打开注释可测试
     // print_r(SN, orderInfo, 1);
 
@@ -198,6 +198,7 @@ Page({
         userInfo: getApp().globalData.formData.userInfo
       })
       console.log('formdata==>', this.data.formData)
+     
     }
   },
 
