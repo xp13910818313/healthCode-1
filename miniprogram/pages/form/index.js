@@ -238,17 +238,13 @@ Page({
       var voice = that.data.voice
       voice = voice.concat(res.result)
       that.setData({
-        voice: voice
+        voice: voice,
+        del:true
       })
-      // UTIL.log("record file path", res.tempFilePath)
-      // UTIL.log("result", res.result)
-      //res.result is the asr result, change the follow step to your source
-      //NLI.process(res.result, pageSelf);
     }
     manager.onError = function (res) {
       console.log('manager.onError')
       console.log(res) //报错信息打印
-      // UTIL.log("error msg", res.msg)
     }
   },
   //添加两个方法
@@ -274,18 +270,6 @@ Page({
       icon: 'loading',
       duration: 2000
     })
-    // wx.cloud.callFunction({
-    //   name: "healthData",
-    //   data: {
-    //     type: "list"
-    //   },
-    //   success: r => {
-    //     console.log(r.result.data[0].list)
-    //     this.setData({
-    //       formData: r.result.data[0].list,
-    //     })
-    //   }
-    // })
   },
 
   del:function() {
@@ -303,7 +287,7 @@ Page({
     })
     if(this.data.voice=='') {
       this.setData({
-        del:!false
+        del:false
       })
     } else {
       this.setData({

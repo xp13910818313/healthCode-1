@@ -1,20 +1,24 @@
-
 <view class="index">
-	<!-- <view class="title">社区健康驿站1.0.3版本</view> -->
-	<!-- <view class="list-box clearfix" >
-		<view wx:for="{{lable}}" wx:key="i" class="list" data-id="{{item.title}}">{{item.title}}</view>
-	</view> -->
+	<view class="head" wx:if="{{show}}">
+		<navigator class="mine-page" url='../mine/mine'>
 
-	<!-- <view class="bgImg">
-		<image class="img" src="../../image/bg.jpg"></image>
-	</view> -->
+			<view class="avatar">
+				<image wx:if="{{userInfo}}" mode="widthFix" class="login" src="{{userInfo.userInfo.avatarUrl}}"></image>
+				<image wx:else mode="widthFix" class="login" src="../../image/mine.png"></image>
+			</view>
+			<text>我的</text>
 
-	<view class="btn">
-		<button class="btn-box" bindtap="openConfirm" data-btn="code">
-			我的健康码
-		</button>
-		<view class="mine" bindtap="toRecord" data-btn="record">我的体测记录</view>
-		<view class="banben">1.0.1版本</view>
+		</navigator>
 	</view>
+	<view class="btn">
+		<view class="btn-group">
+			<button class="btn-box code" bindtap="openConfirm" data-btn="code">
+				我的健康码
+			</button>
+
+		</view>
+		<view class="mine" bindtap="toRecord" data-btn="record">我的体测记录</view>
+	</view>
+
 	<mp-auth show="{{dialogShow}}" bindgetUserInfo="bindgetuserinfo"></mp-auth>
 </view>

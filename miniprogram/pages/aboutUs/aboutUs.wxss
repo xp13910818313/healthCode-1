@@ -1,0 +1,14 @@
+/* pages/aboutUs/aboutUs.wxss */
+.about-us {
+  padding: 10px;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo image {
+  width: 30vw;
+  height: auto;
+
+}

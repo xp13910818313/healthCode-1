@@ -38,7 +38,7 @@ Page({
 
     var orderInfo = '';
     orderInfo += '<CB>社区健康驿站</CB><BR>';
-    orderInfo += '<CB>（上水径）</CB><BR>';
+    orderInfo += '<C>（上水径）</C><BR>';
     orderInfo += '<CB>体测记录</CB><BR>';
     orderInfo += `地址：${this.data.landmark.address}<BR>`;
     let phone=''
@@ -48,9 +48,8 @@ Page({
     orderInfo += `电话：${phone}<BR>`;
     
     orderInfo += `时间：${new Date(this.data.time).getFullYear()}-${new Date(this.data.time).getMonth()}-${new Date(this.data.time).getDate()} ${new Date(this.data.time).getHours()}:${new Date(this.data.time).getMinutes()}:${new Date(this.data.time).getSeconds()}<BR>`;
-    orderInfo += '--------------------------------<BR>';
     orderInfo += `用户ID:${this.data.userInfo.userInfo.userID}<BR>`;
-
+    orderInfo += '--------------------------------<BR>';
     this.data.formData.forEach(elem => {
       
       if (!elem.isTow) {
@@ -72,8 +71,11 @@ Page({
 
     orderInfo += '--------------------------------<BR>';
     orderInfo += '<C>和谐邻里    健康社区</C><BR>';
+    orderInfo += '扫描下方二维码查看体测记录<BR>'; 
     orderInfo += '<QR>https://wec.antbiz.cn/qrcode?openid=o7CqC4tuyzdJoM-feijSFwmdkIEE</QR><BR>'; //把二维码字符串用标签套上即可自动生成二维码
-    orderInfo += '扫描二维码查看体测记录<BR>'; //把二维码字符串用标签套上即可自动生成二维码
+    orderInfo += '备注：本单据只做健康咨询使用，不具有医学诊断功能。'; 
+
+
 
     //***接口返回值说明***
     //正确例子：{"msg":"ok","ret":0,"data":"123456789_20160823165104_1853029628","serverExecutedTime":6}
