@@ -11,7 +11,9 @@ Page({
   },
 
   printer() {
-    console.log('test')
+    wx.showLoading({
+      title: '正在打印',
+    })
     console.log(this.data.formData)
 
     //USER和UKEY在飞鹅云（ http://admin.feieyun.com/ ）管理后台的个人中心可以查看
@@ -27,6 +29,7 @@ Page({
     var SIG = hex_sha1(USER + UKEY + STIME); //获取签名
     var hexcase = 0;
     var chrsz = 8;
+
     wx.cloud.callFunction({
       name: 'printer',
       data: {
@@ -159,13 +162,25 @@ Page({
         success: function (res) {
           console.log(res.data)
           wx.hideLoading({
-            complete: (res) => {},
+            complete: (res) => {
+              wx.showToast({
+                title: '打印成功',
+                icon: 'success'
+              })
+            },
           })
+
         },
         fail: err => {
           wx.hideLoading({
-            complete: (res) => {},
+            complete: (res) => {
+              wx.showToast({
+                title: '打印失败',
+                icon: 'none'
+              })
+            },
           })
+
         }
       })
     }
@@ -198,7 +213,7 @@ Page({
         userInfo: getApp().globalData.formData.userInfo
       })
       console.log('formdata==>', this.data.formData)
-     
+
     }
   },
 
