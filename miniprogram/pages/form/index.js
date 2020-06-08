@@ -17,7 +17,7 @@ Page({
     openid: null,
     formData: null,
     voice: '',
-    del:false
+    del: false
   },
   // 表单提交
   submitForm() {
@@ -25,25 +25,25 @@ Page({
       title: '正在提交',
     })
     console.log(this.data.formData)
-    let data=this.data.formData
+    let data = this.data.formData
     data.push({
-      title:'健康管理师建议',
-      value:this.data.voice,
-      unit:''
+      title: '健康管理师建议',
+      value: this.data.voice,
+      unit: ''
     })
-    console.log('data==>',data)
-   
+    console.log('data==>', data)
+
     let formData = {
       openid: this.data.openid,
       healthData: data,
       userInfo: this.data.userInfo,
       time: new Date()
     }
-    console.log('formData==>',formData)
+    console.log('formData==>', formData)
 
-    getApp().globalData.formData=formData
+    getApp().globalData.formData = formData
 
-    console.log('globalData.formData==>',getApp().globalData.formData)
+    console.log('globalData.formData==>', getApp().globalData.formData)
     wx.cloud.callFunction({
       name: 'healthData',
       data: {
@@ -84,6 +84,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取麦克风权限
+    wx.getSetting({
+      complete: (res) => {
+        if (!res.authSetting['scope.record']) {
+          wx.showModal({
+            cancelColor: '',
+            content: '需要获取手机麦克风权限',
+            complete(e) {
+              if (e.confirm) {
+                console.log('同意授权')
+                wx.authorize({
+                  scope: 'scope.record',
+                  success() {
+                    console.log('获取麦克风成功')
+                  },
+                  fail() {
+                    console.log('获取麦克风失败')
+                  },
+                  complete() {
+                    console.log('获取结束')
+                  }
+                })
+              }
+            }
+          })
+        } else {
+          console.log('已经拥有麦克风权限')
+        }
+
+      },
+    })
     let that = this
     wx.cloud.callFunction({
       name: 'isShow'
@@ -128,7 +159,7 @@ Page({
     }
     manager.onStart = function (res) {
       console.log("成功开始录音识别", res)
-      
+
     }
     manager.onError = function (res) {
       console.error("error msg", res.msg)
@@ -239,7 +270,7 @@ Page({
       voice = voice.concat(res.result)
       that.setData({
         voice: voice,
-        del:true
+        del: true
       })
     }
     manager.onError = function (res) {
@@ -272,26 +303,26 @@ Page({
     })
   },
 
-  del:function() {
+  del: function () {
     this.setData({
-      voice:'',
-      del:false
+      voice: '',
+      del: false
     })
 
   },
-  text(e){
+  text(e) {
     console.log(this.data.voice)
     console.log(e.detail.value)
     this.setData({
-      voice:e.detail.value.trim()
+      voice: e.detail.value.trim()
     })
-    if(this.data.voice=='') {
+    if (this.data.voice == '') {
       this.setData({
-        del:false
+        del: false
       })
     } else {
       this.setData({
-        del:true
+        del: true
       })
     }
   },
