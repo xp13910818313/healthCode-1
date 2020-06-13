@@ -10,6 +10,7 @@
     "pages/addRecord/addRecord",
     "pages/aboutUs/aboutUs",
     "pages/mine/mine",
+    "pages/subscription/subscription",
     "pages/setting/setting"
   ],
   "window": {

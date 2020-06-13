@@ -117,6 +117,13 @@
 					"id": -1,
 					"name": "pages/addRecord/addRecord",
 					"pathName": "pages/addRecord/addRecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/subscription/subscription",
+					"pathName": "pages/subscription/subscription",
 					"scene": null
 				}
 			]
