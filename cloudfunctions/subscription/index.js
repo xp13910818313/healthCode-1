@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
 
   try {
     const result = await cloud.openapi.subscribeMessage.send({
-      touser: 'o7CqC4tuyzdJoM-feijSFwmdkIEE',
+      touser: wxContext.OPENID,
       page: 'pages/index/index',
       lang: 'zh_CN',
       data: {
@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
          value: '假的会议'
         },
         date2: {
-          value: '2020年6月13日'
+          value: '2020年6月15日'
         },
         thing3: {
           value: '假地点'

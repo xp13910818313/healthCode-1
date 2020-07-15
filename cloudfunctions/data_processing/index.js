@@ -6,12 +6,10 @@ cloud.init()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
+  delete event.userInfo
+  event.time=new Date().getTime()
+    return await cloud.database().collection('dataTest').add({
+      data: {...event}
+    })
 
-  return {
-    event,
-    openid: wxContext.OPENID,
-    appid: wxContext.APPID,
-    unionid: wxContext.UNIONID,
-    wxContext: wxContext
-  }
 }

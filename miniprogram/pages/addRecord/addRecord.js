@@ -32,7 +32,7 @@ Page({
       console.log('用户信息', res.result.data)
       this.setData({
         userInfo: res.result.data[0],
-        openid:res.result.data[0].openid
+        openid: res.result.data[0].openid
       })
       if (!this.data.userInfo) {
         wx.showToast({
@@ -99,11 +99,11 @@ Page({
     }
     console.log(this.data.formData)
   },
-  setID(e){
-console.log(e.detail.value)
-this.setData({
-  ID:e.detail.value.trim()
-})
+  setID(e) {
+    console.log(e.detail.value)
+    this.setData({
+      ID: e.detail.value.trim()
+    })
   },
   /**
    * 生命周期函数--监听页面加载

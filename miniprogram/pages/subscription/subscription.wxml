@@ -1,5 +1,4 @@
 <!--pages/subscription/subscription.wxml-->
 <view class="subscription">
 <button type='primary' bindtap="subScrip">订阅</button>
-<button type='primary' bindtap="sendSubScrip">发送订阅</button>
 </view>

@@ -15,35 +15,35 @@
 
 	</view>
 	<view class="list">
-		<block wx:if="{{dataList.length != 0}}">
+		<!-- <block wx:if="{{dataList.length>0}}">
 			<view class="list-item" wx:for="{{dataList}}">
-				<view class="time">
-					<text>时间:</text>
-					<text>{{item.time}}</text>
-				</view>
-				<view class="quota">
-					<view class="content {{itemName.title=='健康管理师建议'?'fullwidth':''}}" wx:for="{{item.healthData}}" wx:for-item="itemName">
-						<block wx:if="{{!itemName.isTow}}">
-							<block wx:if="{{itemName.title=='健康管理师建议'}}">
-								<view>{{itemName.title}}:</view>
-								<view class="full-content">{{itemName.value+itemName.unit}}</view>
-							</block>
-							<block wx:else>
-								<text>{{itemName.title}}:</text>
-								<text>{{itemName.value+itemName.unit}}</text>
-							</block>
-						</block>
-						<block wx:else>
-							<view class="content-title">{{itemName.title}}:</view>
-							<view class="content-item" wx:for="{{itemName.Tow}}" wx:for-item="itemName1">
-								<text>{{itemName1.title}}:</text>
-								<text>{{itemName1.value + itemName1.unit}}</text>
+			<view class="list-item-date">{{dataList[0].Record[0].Items[0].DATERESULT}}</view>
+				<view class="list-item-target" wx:for="{{item.Record}}" wx:for-item="targetItem">
+					<view class="list-item-target-head">
+						<view class="list-item-target-title">{{targetItem.ProjectCode}}</view>
+					</view>
+					<view class="list-item-target-list">
+						<view class="list-item-target-list-item" wx:for="{{targetItem.Items}}" wx:for-item="targetValue">
+							<view class="list-item-target-list-item-result">
+								<view class="list-item-target-list-item-title">{{targetValue.Name}}:</view>
+								<view class="list-item-target-list-item-value">{{targetValue.RESULT+targetValue.UNITS}}</view>
 							</view>
-						</block>
+						</view>
 					</view>
 				</view>
 			</view>
 		</block>
-		<view class="null" wx:else>暂无内容</view>
+		<view class="null" wx:else>暂无内容</view> -->
+		<!-- <view class="list-item" wx:for="{{healthClassify}}">{{item.name}}</view> -->
+		    <view class="page__bd">
+        <view class="weui-grids">
+            <block wx:for="{{healthClassify}}" wx:key="_id">
+                <view class="weui-grid" bindtap="toResult" data-code="{{item.code}}" data-name="{{item.name}}">
+                    <image class="weui-grid__icon" src="{{item.icon}}" />
+                    <view class="weui-grid__label">{{item.name}}</view>
+                </view>
+            </block>
+        </view>
+    </view>
 	</view>
 </view>

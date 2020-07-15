@@ -1,0 +1,29 @@
+	<view class="health-result">
+		<block wx:if="{{dataList.length>0}}">
+			<view class="list-item" wx:for="{{dataList}}">
+				<view class="list-item-target" wx:for="{{item.Record}}" wx:for-item="targetItem">
+					<view class="list-item-target-head">
+						<!-- <view class="list-item-target-title">{{targetItem.ProjectCode}}</view> -->
+						<view class="list-item-target-date">检测时间：{{targetItem.Items[0].DATERESULT}}</view>
+					</view>
+					<view class="list-item-target-list">
+						<view class="list-item-target-list-item" wx:for="{{targetItem.Items}}" wx:for-item="targetValue">
+							<view class="list-item-target-list-item-result">
+								<view class="list-item-target-list-item-title">{{targetValue.Name}}:</view>
+								<view class="list-item-target-list-item-value">{{targetValue.RESULT+targetValue.UNITS}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</block>
+		<block wx:elif="{{report.length>0}}">
+			<view class="report-list">
+				<view class="report-item" wx:for="{{report}}">
+					<view class="report-item-title">{{item.Record0Items0.Name}}</view>
+					<view class="report-item-date">{{item.Record0Items0.DATERESULT}}</view>
+				</view>
+			</view>
+		</block>
+		<view class="null" wx:else>暂无相关数据</view>
+	</view>

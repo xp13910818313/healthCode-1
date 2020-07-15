@@ -56,7 +56,9 @@ Page({
     d = d < 10 ? ('0' + d) : d;
 
     wx.getUserInfo({
+
       success: r => {
+        let _this = this
         console.log("用户信息", r.userInfo)
         wx.cloud.callFunction({
           name: "health_userInfo",
@@ -110,6 +112,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.cloud.callFunction({
+      name: 'login'
+    }).then(res => {
+      console.log(res)
+    })
+
+    return
     _this = this
     wx.cloud.callFunction({
       name: 'isShow'
@@ -156,9 +165,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-this.setData({
-  userInfo:getApp().globalData.userInfo
-})
+    this.setData({
+      userInfo: getApp().globalData.userInfo
+    })
     // console.log("月", Number(new Date().getMonth() + 1) > 9 ? Number(new Date().getMonth() + 1) : "0" + Number(new Date().getMonth() + 1))
   },
 

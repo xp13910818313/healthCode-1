@@ -15,6 +15,7 @@ page {
   background-color: #fff;
   box-shadow: 0 1px 3px #ddd;
   max-height: 140rpx;
+  z-index: 1;
 }
 
 .avatar-img {
@@ -103,4 +104,27 @@ page {
 .content-item {
   padding-left: 14px;
   line-height: calc(68px / 3);
+}
+.list-item-date{
+  text-align: right;
+  font-size: 24rpx;
+}
+.list-item-target-title{
+  font-size: 14px;
+}
+
+.list-item-target-list-item-result{
+  display: flex;
+}
+.list-item-target-list-item-value{
+  flex: 1;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+.list .weui-grid{
+  background-color: #fff;
+}
+.list .weui-grid__icon{
+  width: 70rpx;
+  height: 70rpx;
 }

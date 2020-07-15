@@ -1,0 +1,62 @@
+/* pages/healthResult/healthReslt.wxss */
+page {
+  background-color: #f4f4f4;
+}
+.health-result{
+  padding: 0 10px;
+}
+
+.null {
+  font-size: 14px;
+  text-align: center;
+  padding: 30px 0;
+  color: #6b6b6b;
+}
+
+.list-item {
+  margin-top: 5px;
+  padding: 20rpx;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.list-item .time {
+  border-bottom: 1px solid #ddd;
+  padding: 20rpx;
+}
+
+.list-item:first-child {
+  margin-top: 0;
+}
+
+.list-item-target-title{
+  font-size: 14px;
+}
+
+.list-item-target-list-item-result{
+  display: flex;
+}
+.list-item-target-list-item-value{
+  flex: 1;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+.list-item-target-head{
+  display: flex;
+}
+.list-item-target-title,list-item-target-date{
+  flex: 1;
+}
+.list-item-target-date{
+  text-align: right;
+  font-size: 12px;
+  color: #6b6b6b;
+}
+.report-item{
+  display: flex;
+}
+.report-item-title{
+  flex: 1;
+}

@@ -2,7 +2,7 @@
 	"miniprogramRoot": "miniprogram/",
 	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -124,6 +124,20 @@
 					"id": -1,
 					"name": "pages/subscription/subscription",
 					"pathName": "pages/subscription/subscription",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/record/record",
+					"pathName": "pages/record/record",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/healthResult/healthReslt",
+					"pathName": "pages/healthResult/healthReslt",
 					"scene": null
 				}
 			]
