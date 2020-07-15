@@ -9,7 +9,8 @@
     "pages/record/record",
     "pages/aboutUs/aboutUs",
     "pages/mine/mine",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/analytical/analytical"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -18,13 +19,11 @@
     "navigationBarTitleText": "社区健康驿站",
     "navigationBarTextStyle": "black"
   },
-
-    "plugins": {
-      "WechatSI": {
-        "version": "0.0.7",
-        "provider": "wx069ba97219f66d99"
-          }
-    },
-  
+  "plugins": {
+    "WechatSI": {
+      "version": "0.0.7",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }

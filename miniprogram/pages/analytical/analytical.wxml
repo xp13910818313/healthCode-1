@@ -1,0 +1,4 @@
+<!-- <web-view src="http://127.0.0.1:5500/charset-encoding-series/demo/html/demo_charset_charsetTools.html"></web-view> -->
+<scroll-view scroll-x="true">
+	<rich-text nodes='{{htmlSnip}}'></rich-text>
+</scroll-view>

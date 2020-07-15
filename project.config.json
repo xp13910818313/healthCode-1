@@ -2,7 +2,7 @@
 	"miniprogramRoot": "miniprogram/",
 	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -24,7 +24,7 @@
 	},
 	"appid": "wx9487505d3a876738",
 	"projectname": "healthCode",
-	"libVersion": "2.11.0",
+	"libVersion": "2.11.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -111,6 +111,12 @@
 					"name": "pages/setting/setting",
 					"pathName": "pages/setting/setting",
 					"query": "openid=o7CqC4tuyzdJoM-feijSFwmdkIEE",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/analytical/analytical",
+					"pathName": "pages/analytical/analytical",
 					"scene": null
 				}
 			]
