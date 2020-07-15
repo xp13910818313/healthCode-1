@@ -24,7 +24,7 @@
 	},
 	"appid": "wx9487505d3a876738",
 	"projectname": "healthCode",
-	"libVersion": "2.11.0",
+	"libVersion": "2.11.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -54,7 +54,7 @@
 					"id": 0,
 					"name": "pages/form/index",
 					"pathName": "pages/form/index",
-					"query": "openid=o7CqC4tuyzdJoM-feijSFwmdkIEE",
+					"query": "openid=o7CqC4tMsBWS_id90ZYd6ltpHQcw",
 					"scene": 1011
 				},
 				{
@@ -115,29 +115,15 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/addRecord/addRecord",
-					"pathName": "pages/addRecord/addRecord",
+					"name": "pages/analytical/analytical",
+					"pathName": "pages/analytical/analytical",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/subscription/subscription",
-					"pathName": "pages/subscription/subscription",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/record/record",
-					"pathName": "pages/record/record",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/healthResult/healthReslt",
-					"pathName": "pages/healthResult/healthReslt",
+					"name": "pages/analytical/analytical",
+					"pathName": "pages/analytical/analytical",
 					"scene": null
 				}
 			]

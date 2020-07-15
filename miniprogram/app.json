@@ -10,9 +10,8 @@
     "pages/addRecord/addRecord",
     "pages/aboutUs/aboutUs",
     "pages/mine/mine",
-    "pages/subscription/subscription",
     "pages/setting/setting",
-    "pages/healthResult/healthReslt"
+    "pages/analytical/analytical"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -23,10 +22,9 @@
   },
   "plugins": {
     "WechatSI": {
-      "version": "0.3.1",
+      "version": "0.0.7",
       "provider": "wx069ba97219f66d99"
     }
   },
-
   "sitemapLocation": "sitemap.json"
 }

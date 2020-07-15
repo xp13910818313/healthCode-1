@@ -1,0 +1,4 @@
+
+<scroll-view scroll-x="true">
+	<rich-text nodes='{{htmlSnip}}'></rich-text>
+</scroll-view>
